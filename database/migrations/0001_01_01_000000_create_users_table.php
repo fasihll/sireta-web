@@ -15,11 +15,17 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
+            $table->string('provinsi')->nullable();
+            $table->string('kabupaten')->nullable();
+            $table->string('kecamatan')->nullable();
+            $table->string('desa')->nullable();
+            $table->string('alamat')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
             $table->foreignId('current_team_id')->nullable();
             $table->string('profile_photo_path', 2048)->nullable();
+            $table->integer('role')->default(2);
             $table->timestamps();
         });
 
