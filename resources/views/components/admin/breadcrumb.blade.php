@@ -8,10 +8,11 @@
                 </svg></a>
         </li>
         <li class="breadcrumb-item text-capitalize">
-            <a href="javascript:void(0);">{{ Request::segment(1) }}</a>
+            <a href="{{ route(Request::segment(1)) }}">{{ Request::segment(1) }}</a>
         </li>
         @if (Request::segment(2))
-            <li class="breadcrumb-item text-capitalize"><a href="javascript:void(0);">{{ Request::segment(2) }}</a>
+            <li class="breadcrumb-item text-capitalize"><a
+                    href="{{ route(Request::segment(2)) }}">{{ Request::segment(2) }}</a>
             </li>
         @endif
     </ol>

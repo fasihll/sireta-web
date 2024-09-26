@@ -1,7 +1,8 @@
  <div class="row layout-spacing" x-data="{ modelEdit: false }">
 
      <div class="col-xl-12 col-lg-12 col-md-12 col-12 layout-spacing">
-         <x-admin.title title="Data Alternatif" />
+         <x-admin.title title="Data Kriteria" />
+
          <div class="widget widget-content-area br-4">
              <div class="widget-one">
 
@@ -30,7 +31,11 @@
                          </div>
                      </div>
 
-                     @livewire('admin.alternatif.create')
+                     <div class="d-flex">
+                         <a href="{{ route('perbandingan-ahp') }}" wire:navigate class="btn btn-info mr-2">Pembobotan
+                             AHP</a>
+                         @livewire('admin.kriteria.create')
+                     </div>
 
 
                  </div>
@@ -48,17 +53,16 @@
                                      <span class="new-control-indicator"></span>
                                  </label>
                              </th>
-                             <th class="">Image</th>
                              <th class="">Name</th>
-                             <th class="text-wrap">Description</th>
-                             <th class="">Category</th>
+                             <th class="">Bobot</th>
+                             <th class="">Type</th>
                              <th class="text-center">Action</th>
                          </tr>
                      </thead>
                      <tbody>
-                         @foreach ($wisata as $item)
+                         @foreach ($kriteria as $item)
                              <tr wire:key='{{ $item->id }}'>
-                                 <td class="checkbox-column">
+                                 <td class="checkbox-column" style="width: 1rem">
                                      <label class="new-control new-checkbox checkbox-primary"
                                          style="height: 18px; margin: 0 auto">
                                          <input type="checkbox" class="new-control-input todochkbox" id="todo-1"
@@ -68,20 +72,13 @@
                                      </label>
                                  </td>
                                  <td>
-                                     @if ($item->image)
-                                         <div class="avatar avatar-sm">
-                                             <img src="{{ asset('storage/images/' . $item->image) }}"
-                                                 alt="{{ $item->name }}" class="rounded-circle" />
-                                         </div>
-                                     @else
-                                         <p>No Image</p>
-                                     @endif
-                                 </td>
-                                 <td>
                                      <p class="mb-0">{{ $item->name }}</p>
                                  </td>
-                                 <td class="text-truncate" style="max-width: 30rem;">{{ $item->description }}</td>
-                                 <td>{{ $item->category->name }}</td>
+                                 <td>
+                                     <p class="mb-0">{{ $item->bobot }}</p>
+                                 </td>
+
+                                 <td>{{ $item->type }}</td>
 
                                  <td class="text-center">
                                      <ul class="table-controls">
@@ -128,10 +125,10 @@
 
 
 
-                 @livewire('admin.alternatif.edit')
+                 @livewire('admin.kriteria.edit')
 
 
-                 {{ $wisata->links() }}
+                 {{ $kriteria->links() }}
 
              </div>
          </div>

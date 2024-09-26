@@ -1,21 +1,11 @@
-<div>
+<div x-show="{ open: false }">
+    <button class="btn btn-primary" data-toggle="modal" data-target="#modalCreate" x-on:click="open = ! open">Create
+        Data</button>
 
-    <x-admin.modal x-show="{modelEdit}" class="modal fade" id="modalEdit" wire:ignore.self>
+    <x-admin.modal x-show="{open}" class="modal fade" id="modalCreate" wire:ignore.self>
         <x-slot name="title">
-            Edit Data
+            Create Data
         </x-slot>
-
-        <div class="form-group">
-            <label for="exampleFormControlFile1">Image</label>
-            <input type="file" class="form-control-file @error('image') is-invalid @enderror"
-                id="exampleFormControlFile1" wire:model="image">
-            <div class="invalid-feedback">
-                @error('image')
-                    {{ $message }}
-                @enderror
-            </div>
-            <div wire:loading wire:target="image">Uploading...</div>
-        </div>
         <div class="form-group ">
             <label for="formGroupExampleInput">Name</label>
             <input type="text" class="form-control @error('name') is-invalid @enderror" id="formGroupExampleInput"
@@ -28,25 +18,24 @@
 
         </div>
         <div class="form-group ">
-            <label for="exampleFormControlTextarea1">Description</label>
-            <textarea class="form-control @error('description') is-invalid @enderror" id="exampleFormControlTextarea1"
-                rows="3" wire:model='description'></textarea>
+            <label for="formGroupExampleInput">Bobot</label>
+            <input type="number" class="form-control @error('bobot') is-invalid @enderror" id="formGroupExampleInput"
+                placeholder="Example input" wire:model='bobot'>
             <div class="invalid-feedback">
-                @error('description')
+                @error('bobot')
                     {{ $message }}
                 @enderror
             </div>
+
         </div>
         <div class="form-group ">
-            <label for="select-form">Pilih category</label>
-            <select id="select-form" class="form-control @error('category') is-invalid @enderror" wire:model='category'>
-                @foreach ($categorys as $c)
-                    <option value="{{ $c->id }}" @if ($category == $c->id)  @endif>{{ $c->name }}
-                    </option>
-                @endforeach
+            <label for="select-form">Pilih Type</label>
+            <select id="select-form" class="form-control @error('type') is-invalid @enderror" wire:model='type'>
+                <option value="cost">Cost</option>
+                <option value="benefit">Benefit</option>
             </select>
             <div class="invalid-feedback">
-                @error('category')
+                @error('type')
                     {{ $message }}
                 @enderror
             </div>
@@ -56,7 +45,7 @@
             <button class="btn" data-dismiss="modal" data-toggle="modal" data-target="#exampleModalCenter"><i
                     class="flaticon-cancel-12"></i>
                 Discard</button>
-            <button wire:click='update' type="submit" x-on:click="modelEdit = ! modelEdit" class="btn btn-primary"
+            <button wire:click='store' type="submit" x-on:click="open = ! open" class="btn btn-primary"
                 data-dismiss="modal" data-toggle="modal">
                 <svg wire:loading wire:target='store' xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -75,5 +64,4 @@
         </x-slot>
 
     </x-admin.modal>
-
 </div>

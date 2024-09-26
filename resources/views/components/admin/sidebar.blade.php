@@ -1,5 +1,4 @@
 <div class="sidebar-wrapper sidebar-theme">
-
     <nav id="sidebar">
         <div class="profile-info">
             <figure class="user-cover-image">
@@ -13,7 +12,7 @@
         <div class="shadow-bottom"></div>
         <ul class="list-unstyled menu-categories" id="accordionExample">
             <li class="menu {{ Request::segment(1) == 'dashboard' ? 'active' : '' }}">
-                <a href="{{ route('dashboard') }}"
+                <a href="{{ route('dashboard') }}" wire:navigate
                     aria-expanded="{{ Request::segment(1) == 'dashboard' ? 'true' : '' }}" class="dropdown-toggle">
                     <div class="">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -27,8 +26,8 @@
                 </a>
             </li>
             <li class="menu {{ Request::segment(1) == 'kriteria' ? 'active' : '' }}">
-                <a href="javascript:void(0);" aria-expanded="{{ Request::segment(1) == 'kriteria' ? 'true' : '' }}"
-                    class="dropdown-toggle">
+                <a href="{{ route('kriteria') }}" wire:navigate
+                    aria-expanded="{{ Request::segment(1) == 'kriteria' ? 'true' : '' }}" class="dropdown-toggle">
                     <div class="">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                             fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -40,7 +39,7 @@
                 </a>
             </li>
             <li class="menu {{ Request::segment(1) == 'alternatif' ? 'active' : '' }}">
-                <a href="{{ route('alternatif') }}"
+                <a href="{{ route('alternatif') }}" wire:navigate
                     aria-expanded="{{ Request::segment(1) == 'alternatif' ? 'true' : '' }}" class="dropdown-toggle">
                     <div class="">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -55,8 +54,8 @@
                 </a>
             </li>
             <li class="menu {{ Request::segment(1) == 'penilaian' ? 'active' : '' }}">
-                <a href="javascript:void(0);" aria-expanded="{{ Request::segment(1) == 'penilaian' ? 'true' : '' }}"
-                    class="dropdown-toggle">
+                <a href="{{ route('penilaian') }}" wire:navigate
+                    aria-expanded="{{ Request::segment(1) == 'penilaian' ? 'true' : '' }}" class="dropdown-toggle">
                     <div class="">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                             fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -70,8 +69,8 @@
                 </a>
             </li>
             <li class="menu {{ Request::segment(1) == 'perangkingan' ? 'active' : '' }}">
-                <a href="javascript:void(0);" aria-expanded="{{ Request::segment(1) == 'perangkingan' ? 'true' : '' }}"
-                    class="dropdown-toggle">
+                <a href="{{ route('perangkingan') }}" wire:navigate
+                    aria-expanded="{{ Request::segment(1) == 'perangkingan' ? 'true' : '' }}" class="dropdown-toggle">
                     <div class="">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                             fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -84,8 +83,8 @@
                 </a>
             </li>
             <li class="menu {{ Request::segment(1) == 'result' ? 'active' : '' }}">
-                <a href="javascript:void(0);" aria-expanded="{{ Request::segment(1) == 'result' ? 'true' : '' }}"
-                    class="dropdown-toggle">
+                <a href="{{ route('result') }}" wire:navigate
+                    aria-expanded="{{ Request::segment(1) == 'result' ? 'true' : '' }}" class="dropdown-toggle">
                     <div class="">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                             fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"

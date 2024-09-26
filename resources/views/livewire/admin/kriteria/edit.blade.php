@@ -5,17 +5,6 @@
             Edit Data
         </x-slot>
 
-        <div class="form-group">
-            <label for="exampleFormControlFile1">Image</label>
-            <input type="file" class="form-control-file @error('image') is-invalid @enderror"
-                id="exampleFormControlFile1" wire:model="image">
-            <div class="invalid-feedback">
-                @error('image')
-                    {{ $message }}
-                @enderror
-            </div>
-            <div wire:loading wire:target="image">Uploading...</div>
-        </div>
         <div class="form-group ">
             <label for="formGroupExampleInput">Name</label>
             <input type="text" class="form-control @error('name') is-invalid @enderror" id="formGroupExampleInput"
@@ -28,25 +17,24 @@
 
         </div>
         <div class="form-group ">
-            <label for="exampleFormControlTextarea1">Description</label>
-            <textarea class="form-control @error('description') is-invalid @enderror" id="exampleFormControlTextarea1"
-                rows="3" wire:model='description'></textarea>
+            <label for="formGroupExampleInput">Bobot</label>
+            <input type="number" class="form-control @error('bobot') is-invalid @enderror" id="formGroupExampleInput"
+                placeholder="Example input" wire:model='bobot'>
             <div class="invalid-feedback">
-                @error('description')
+                @error('bobot')
                     {{ $message }}
                 @enderror
             </div>
+
         </div>
         <div class="form-group ">
-            <label for="select-form">Pilih category</label>
-            <select id="select-form" class="form-control @error('category') is-invalid @enderror" wire:model='category'>
-                @foreach ($categorys as $c)
-                    <option value="{{ $c->id }}" @if ($category == $c->id)  @endif>{{ $c->name }}
-                    </option>
-                @endforeach
+            <label for="select-form">Pilih Type</label>
+            <select id="select-form" class="form-control @error('type') is-invalid @enderror" wire:model='type'>
+                <option value="cost">Cost</option>
+                <option value="benefit">Benefit</option>
             </select>
             <div class="invalid-feedback">
-                @error('category')
+                @error('type')
                     {{ $message }}
                 @enderror
             </div>

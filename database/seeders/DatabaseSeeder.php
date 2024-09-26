@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
             UsersSeeder::class,
             CategorySeeder::class,
             WisataSeeder::class,
+            KriteriaSeeder::class,
         ]);
     }
 }

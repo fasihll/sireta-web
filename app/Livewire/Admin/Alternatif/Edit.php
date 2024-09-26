@@ -64,12 +64,12 @@ class Edit extends Component
         }
 
         if (Wisata::where('id', $this->id)->update($data)) {
-            $this->alert('success', 'Wisata berhasil ditambahkan');
+            $this->alert('success', 'Wisata berhasil di edit');
             $this->reset();
             // redirect()->route('alternatif');
             $this->dispatch('refreshData');
         } else {
-            $this->alert('error', 'Wisata gagal ditambahkan');
+            $this->alert('error', 'Wisata gagal di edit');
         }
     }
 

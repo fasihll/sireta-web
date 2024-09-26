@@ -10,7 +10,4 @@ class Kriteria extends Model
     use HasFactory;
     protected $table = 'kriterias';
     protected $fillable = ['name', 'bobot', 'type'];
-
-    const TYPE_BENEFIT = 'benefit';
-    const TYPE_COST = 'cost';
 }

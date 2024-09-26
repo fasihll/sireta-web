@@ -1,4 +1,4 @@
-<div x-data="{ open: false }">
+<div x-show="{ open: false }">
     <button class="btn btn-primary" data-toggle="modal" data-target="#modalCreate" x-on:click="open = ! open">Create
         Data</button>
 

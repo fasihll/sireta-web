@@ -2,12 +2,16 @@
 
 use App\Livewire\Admin\Alternatif\Show as Alternatif;
 use App\Livewire\Admin\Dashboard\Show as Dashboard;
+use App\Livewire\Admin\Kriteria\PerbandiganAhp;
+use App\Livewire\Admin\Kriteria\Show as Kriteria;
+use App\Livewire\Admin\Penilaian\Show as Penilaian;
+use App\Livewire\Admin\Perangkingan\Show as Perangkingan;
+use App\Livewire\Admin\Result\Show as Result;
 use App\Livewire\Landing\Home;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', Home::class)->name('home');
 
-Route::get('/alternatif', Alternatif::class)->name('alternatif');
 
 Route::middleware([
     'role.check',
@@ -16,4 +20,12 @@ Route::middleware([
     'verified',
 ])->group(function () {
     Route::get('/dashboard', Dashboard::class)->name('dashboard');
+    Route::prefix('kriteria')->group(function () {
+        Route::get('/', Kriteria::class)->name('kriteria');
+        Route::get('/perbandingan-ahp', PerbandiganAhp::class)->name('perbandingan-ahp');
+    });
+    Route::get('/alternatif', Alternatif::class)->name('alternatif');
+    Route::get('/penilaian', Penilaian::class)->name('penilaian');
+    Route::get('/perangkingan', Perangkingan::class)->name('perangkingan');
+    Route::get('/result', Result::class)->name('result');
 });
