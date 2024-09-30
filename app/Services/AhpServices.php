@@ -31,6 +31,11 @@ class AhpServices
       }
     }
 
+    $sumRowNormalized = [];
+    for ($i = 0; $i < $n; $i++) {
+      $sumRowNormalized[$i] = array_sum($normalizedMatrix[$i]); // Sum of each row
+    }
+
     // Calculate weights (priorities)
     for ($i = 0; $i < $n; $i++) {
       $weights[$i] = array_sum($normalizedMatrix[$i]) / $n; // average of each row
@@ -55,6 +60,7 @@ class AhpServices
       'comparisonMatrix' => $comparisonMatrix,
       'normalizedMatrix' => $normalizedMatrix,
       'sumColumn' => $sumColumn,
+      'sumRowNormalized' => $sumRowNormalized,
       'weights' => $weights,
       'eigenValues' => $eigenValues,
       'lambdaMax' => $lambdaMax,

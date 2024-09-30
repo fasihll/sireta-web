@@ -33,12 +33,6 @@ class WisataSeeder extends Seeder
         ]);
         Wisata::create([
             'image' => '',
-            'name' => 'Sinjay',
-            'description' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Commodi, at saepe placeat vel sapiente consectetur ratione ut consequatur. Assumenda, cum.',
-            'category_id' => 3,
-        ]);
-        Wisata::create([
-            'image' => '',
             'name' => 'pantai bitu',
             'description' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Commodi, at saepe placeat vel sapiente consectetur ratione ut consequatur. Assumenda, cum.',
             'category_id' => 1,

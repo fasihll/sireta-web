@@ -12,8 +12,9 @@ class PerbandinganBerpasangan extends Model
     protected $fillable = [
         'title',
         'matrix',
+        'matrix_row_sum',
         'matrix_normalized',
-        'matrix_col_sum',
+        'matrix_normalized_col_sum',
         'wights',
         'eigens',
         'lambda_max',

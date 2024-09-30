@@ -15,8 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->json('matrix');
+            $table->json('matrix_row_sum');
             $table->json('matrix_normalized');
-            $table->json('matrix_col_sum');
+            $table->json('matrix_normalized_col_sum');
             $table->json('wights');
             $table->json('eigens');
             $table->double('lambda_max');

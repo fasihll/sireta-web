@@ -68,9 +68,9 @@
                     </div>
                 </a>
             </li>
-            <li class="menu {{ Request::segment(1) == 'perangkingan' ? 'active' : '' }}">
-                <a href="{{ route('perangkingan') }}" wire:navigate
-                    aria-expanded="{{ Request::segment(1) == 'perangkingan' ? 'true' : '' }}" class="dropdown-toggle">
+            <li class="menu {{ Request::segment(1) == 'perhitungan' ? 'active' : '' }}">
+                <a href="{{ route('perhitungan') }}" wire:navigate
+                    aria-expanded="{{ Request::segment(1) == 'perhitungan' ? 'true' : '' }}" class="dropdown-toggle">
                     <div class="">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                             fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -78,7 +78,7 @@
                             <path d="M21.21 15.89A10 10 0 1 1 8 2.83" />
                             <path d="M22 12A10 10 0 0 0 12 2v10z" />
                         </svg>
-                        <span> Data Perangkingan</span>
+                        <span> Data Perhitungan</span>
                     </div>
                 </a>
             </li>

@@ -83,6 +83,7 @@
 
          <div class="widget widget-content-area br-4">
              <div class="widget-one">
+                 <h4>Matrix Perbandingan</h4>
                  <table class="table table-bordered">
                      <thead>
                          <tr>
@@ -103,6 +104,88 @@
                          @endforeach
                      </tbody>
                  </table>
+                 @if ($AhpResult)
+                     <h4>Normalisasi</h4>
+                     <table class="table table-bordered">
+                         <thead>
+                             <tr>
+                                 <th>Kriteria</th>
+                                 @foreach ($kriteria as $criterion)
+                                     <th>{{ $criterion->name }}</th>
+                                 @endforeach
+                                 <th>Jumlah</th>
+                                 <th>Weigth</th>
+                                 <th>Eigen Value</th>
+                             </tr>
+                         </thead>
+                         <tbody>
+                             @foreach (json_decode($AhpResult->matrix_normalized) as $rowIndex => $row)
+                                 <tr>
+                                     <td>{{ $kriteria[$rowIndex]->name }}</td>
+                                     @foreach ($row as $col)
+                                         <td>{{ number_format($col, 2) }}</td>
+                                     @endforeach
+
+                                     <td>{{ number_format(json_decode($AhpResult->matrix_normalized_col_sum)[$rowIndex], 2) }}
+                                     </td>
+                                     <td>{{ number_format(json_decode($AhpResult->wights)[$rowIndex], 2) }}</td>
+                                     <td>{{ number_format(json_decode($AhpResult->eigens)[$rowIndex], 2) }}</td>
+
+                                 </tr>
+                             @endforeach
+                         </tbody>
+                     </table>
+
+                     <h4>Status</h4>
+
+                     <table class="table table-bordered">
+                         <thead>
+                             <tr>
+                                 <th>Consistecy Index</th>
+                                 <th>Random Index</th>
+                                 <th>Consistecy Ratio</th>
+                                 <th>Status</th>
+                             </tr>
+                         </thead>
+                         <tbody>
+                             <tr>
+
+                                 <td>{{ $AhpResult->consistency_index }}</td>
+                                 <td>{{ $AhpResult->random_index }}</td>
+                                 <td>{{ $AhpResult->consistency_ratio }}</td>
+                                 <td>
+                                     @if ($AhpResult->is_consistent)
+                                         <span class="badge badge-success">Konsisten</span>
+                                     @else
+                                         <span class="badge badge-danger">Tidak Konsisten</span>
+                                     @endif
+                                 </td>
+
+                             </tr>
+                         </tbody>
+                     </table>
+
+                     <h4>Prioritas</h4>
+
+                     <table class="table table-bordered">
+                         <thead>
+                             <tr>
+                                 @foreach ($kriteria as $criterion)
+                                     <th>{{ $criterion->name }}</th>
+                                 @endforeach
+                             </tr>
+                         </thead>
+                         <tbody>
+                             <tr>
+
+                                 @foreach (json_decode($AhpResult->wights) as $priority)
+                                     <td>{{ $priority }}</td>
+                                 @endforeach
+
+                             </tr>
+                         </tbody>
+                     </table>
+                 @endif
              </div>
          </div>
 

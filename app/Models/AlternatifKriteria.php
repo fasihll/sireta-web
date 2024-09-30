@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class AlternatifKriteria extends Model
 {
     use HasFactory;
-    protected $table = 'alternatif_kriteria';
+    protected $table = 'alternatif_kriterias';
     protected $fillable = ['wisata_id', 'kriteria_id', 'value'];
 
     public function wisata()

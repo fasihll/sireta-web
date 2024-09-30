@@ -5,7 +5,7 @@ use App\Livewire\Admin\Dashboard\Show as Dashboard;
 use App\Livewire\Admin\Kriteria\PerbandiganAhp;
 use App\Livewire\Admin\Kriteria\Show as Kriteria;
 use App\Livewire\Admin\Penilaian\Show as Penilaian;
-use App\Livewire\Admin\Perangkingan\Show as Perangkingan;
+use App\Livewire\Admin\Perhitungan\Show as Perhitungan;
 use App\Livewire\Admin\Result\Show as Result;
 use App\Livewire\Landing\Home;
 use Illuminate\Support\Facades\Route;
@@ -26,6 +26,6 @@ Route::middleware([
     });
     Route::get('/alternatif', Alternatif::class)->name('alternatif');
     Route::get('/penilaian', Penilaian::class)->name('penilaian');
-    Route::get('/perangkingan', Perangkingan::class)->name('perangkingan');
+    Route::get('/perhitungan', Perhitungan::class)->name('perhitungan');
     Route::get('/result', Result::class)->name('result');
 });
