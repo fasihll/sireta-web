@@ -23,6 +23,7 @@
     <link href="{{ asset('assets/css/elements/breadcrumb.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/css/components/custom-modal.css') }}" rel="stylesheet" type="text/css" />
 
+    @stack('styles')
 
     <!-- END GLOBAL MANDATORY STYLES -->
 

@@ -86,8 +86,9 @@ class PerbandiganAhp extends Component
 
     public function store($data)
     {
-        PerbandinganBerpasangan::create([
+        PerbandinganBerpasangan::updateOrCreate([
             'title' => 'Perbandingan Kriteria',
+        ], [
             'matrix' => json_encode($data['comparisonMatrix']),
             'matrix_row_sum' => json_encode($data['sumColumn']),
             'matrix_normalized' => json_encode($data['normalizedMatrix']),
