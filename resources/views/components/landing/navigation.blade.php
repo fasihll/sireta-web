@@ -3,7 +3,7 @@
         @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
             <button class="flex text-sm border-2 border-transparent rounded-full focus:outline-none  transition me-2">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                    stroke="#56478e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                     class="feather feather-settings ">
                     <circle cx="12" cy="12" r="3"></circle>
                     <path

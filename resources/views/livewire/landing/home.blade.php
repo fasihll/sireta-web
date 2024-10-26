@@ -1,240 +1,528 @@
-<div class="bg-gray-50 text-black/50">
+<div>
+    <!-- Hero Section -->
+    <section class="h-screen bg-cover bg-center relative" style="background-color: rgba(0, 147, 233, 100%)">
+        <div class="absolute inset-0 bottom-0">
+            <div class="custom-shape-divider-bottom-1729560018">
+                <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"
+                    preserveAspectRatio="none">
+                    <path
+                        d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z"
+                        opacity=".25" class="shape-fill"></path>
+                    <path
+                        d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z"
+                        opacity=".5" class="shape-fill"></path>
+                    <path
+                        d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z"
+                        class="shape-fill"></path>
+                </svg>
+            </div>
+        </div>
+        <div class="relative z-9 flex flex-col md:flex-row items-center justify-center h-full px-6 max-w-7xl mx-auto">
+            <div class="md:w-1/2 text-left md:text-left" data-aos="fade-right">
+                <h1 class="text-4xl md:text-5xl font-bold mb-6 text-white">SIRETA</h1>
+                <p class="text-xl mb-6 text-white">Sireta Merupakan Sistem Rekomendasi Wisata atau Sistem Pendukung
+                    Keputusan Untuk Menentukan Rekomendasi
+                    Wisata Di Bangkalan Menggunakan Metode Gabungan Yaitu Analitical Hirarcy Proccess dan Weight
+                    Product.</p>
+                <a href="#" class="btn btn-light border-primary">Lihat Rekomendasi</a>
+            </div>
+            <div class="md:w-1/2 md:flex justify-center md:justify-end hidden" data-aos="zoom-out">
+                <!-- SVG Icon -->
+                <img src="{{ asset('assets/img/icon_hero.svg') }}" alt="App Icon" class="w-64 h-64 md:w-96 md:h-96">
+            </div>
+        </div>
 
-    <svg class="absolute -left-20 top-0 max-w-[877px]" xmlns="http://www.w3.org/2000/svg" fill="none"
-        viewBox="0 0 877 968">
-        <g clip-path="url(#a)">
-            <circle cx="391" cy="391" r="390.5" stroke="#56478e" transform="matrix(-1 0 0 1 416 -56)" />
-            <circle cx="468" cy="468" r="467.5" stroke="#56478e" opacity=".3"
-                transform="matrix(-1 0 0 1 493 -133)" />
-            <circle cx="558" cy="558" r="557.5" stroke="#56478e" opacity=".1"
-                transform="matrix(-1 0 0 1 583 -223)" />
-            <g filter="url(#b)">
-                <ellipse cx="583" cy="229.5" fill="#56478e" rx="583" ry="229.5"
-                    transform="matrix(-1 0 0 1 621 -9)" />
-            </g>
-            <g filter="url(#c)">
-                <ellipse cx="262" cy="184.5" fill="#fff" rx="262" ry="184.5"
-                    transform="matrix(-1 0 0 1 99 42)" />
-            </g>
-        </g>
-        <defs>
-            <filter id="b" width="1614" height="907" x="-769" y="-233" color-interpolation-filters="sRGB"
-                filterUnits="userSpaceOnUse">
-                <feFlood flood-opacity="0" result="BackgroundImageFix" />
-                <feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
-                <feGaussianBlur result="effect1_foregroundBlur_3089_39042" stdDeviation="112" />
-            </filter>
-            <filter id="c" width="972" height="817" x="-649" y="-182" color-interpolation-filters="sRGB"
-                filterUnits="userSpaceOnUse">
-                <feFlood flood-opacity="0" result="BackgroundImageFix" />
-                <feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
-                <feGaussianBlur result="effect1_foregroundBlur_3089_39042" stdDeviation="112" />
-            </filter>
-            <clipPath id="a">
-                <path fill="#fff" d="M877 0H0v968h877z" />
-            </clipPath>
-        </defs>
-    </svg>
-    <div
-        class="relative min-h-screen flex flex-col items-center justify-center selection:bg-[#56478e] selection:text-white">
-        <div class="relative w-full max-w-2xl px-6 lg:max-w-7xl">
-            <header class="grid grid-cols-2 items-center gap-2  lg:grid-cols-3">
-                <div class="flex lg:justify-center lg:col-start-2">
-                    <svg class="h-12 w-auto text-white lg:h-16 lg:text-[#56478e]" viewBox="0 0 62 65" fill="none"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M61.8548 14.6253C61.8778 14.7102 61.8895 14.7978 61.8897 14.8858V28.5615C61.8898 28.737 61.8434 28.9095 61.7554 29.0614C61.6675 29.2132 61.5409 29.3392 61.3887 29.4265L49.9104 36.0351V49.1337C49.9104 49.4902 49.7209 49.8192 49.4118 49.9987L25.4519 63.7916C25.3971 63.8227 25.3372 63.8427 25.2774 63.8639C25.255 63.8714 25.2338 63.8851 25.2101 63.8913C25.0426 63.9354 24.8666 63.9354 24.6991 63.8913C24.6716 63.8838 24.6467 63.8689 24.6205 63.8589C24.5657 63.8389 24.5084 63.8215 24.456 63.7916L0.501061 49.9987C0.348882 49.9113 0.222437 49.7853 0.134469 49.6334C0.0465019 49.4816 0.000120578 49.3092 0 49.1337L0 8.10652C0 8.01678 0.0124642 7.92953 0.0348998 7.84477C0.0423783 7.8161 0.0598282 7.78993 0.0697995 7.76126C0.0884958 7.70891 0.105946 7.65531 0.133367 7.6067C0.152063 7.5743 0.179485 7.54812 0.20192 7.51821C0.230588 7.47832 0.256763 7.43719 0.290416 7.40229C0.319084 7.37362 0.356476 7.35243 0.388883 7.32751C0.425029 7.29759 0.457436 7.26518 0.498568 7.2415L12.4779 0.345059C12.6296 0.257786 12.8015 0.211853 12.9765 0.211853C13.1515 0.211853 13.3234 0.257786 13.475 0.345059L25.4531 7.2415H25.4556C25.4955 7.26643 25.5292 7.29759 25.5653 7.32626C25.5977 7.35119 25.6339 7.37362 25.6625 7.40104C25.6974 7.43719 25.7224 7.47832 25.7523 7.51821C25.7735 7.54812 25.8021 7.5743 25.8196 7.6067C25.8483 7.65656 25.8645 7.70891 25.8844 7.76126C25.8944 7.78993 25.9118 7.8161 25.9193 7.84602C25.9423 7.93096 25.954 8.01853 25.9542 8.10652V33.7317L35.9355 27.9844V14.8846C35.9355 14.7973 35.948 14.7088 35.9704 14.6253C35.9792 14.5954 35.9954 14.5692 36.0053 14.5405C36.0253 14.4882 36.0427 14.4346 36.0702 14.386C36.0888 14.3536 36.1163 14.3274 36.1375 14.2975C36.1674 14.2576 36.1923 14.2165 36.2272 14.1816C36.2559 14.1529 36.292 14.1317 36.3244 14.1068C36.3618 14.0769 36.3942 14.0445 36.4341 14.0208L48.4147 7.12434C48.5663 7.03694 48.7383 6.99094 48.9133 6.99094C49.0883 6.99094 49.2602 7.03694 49.4118 7.12434L61.3899 14.0208C61.4323 14.0457 61.4647 14.0769 61.5021 14.1055C61.5333 14.1305 61.5694 14.1529 61.5981 14.1803C61.633 14.2165 61.6579 14.2576 61.6878 14.2975C61.7103 14.3274 61.7377 14.3536 61.7551 14.386C61.7838 14.4346 61.8 14.4882 61.8199 14.5405C61.8312 14.5692 61.8474 14.5954 61.8548 14.6253ZM59.893 27.9844V16.6121L55.7013 19.0252L49.9104 22.3593V33.7317L59.8942 27.9844H59.893ZM47.9149 48.5566V37.1768L42.2187 40.4299L25.953 49.7133V61.2003L47.9149 48.5566ZM1.99677 9.83281V48.5566L23.9562 61.199V49.7145L12.4841 43.2219L12.4804 43.2194L12.4754 43.2169C12.4368 43.1945 12.4044 43.1621 12.3682 43.1347C12.3371 43.1097 12.3009 43.0898 12.2735 43.0624L12.271 43.0586C12.2386 43.0275 12.2162 42.9888 12.1887 42.9539C12.1638 42.9203 12.1339 42.8916 12.114 42.8567L12.1127 42.853C12.0903 42.8156 12.0766 42.7707 12.0604 42.7283C12.0442 42.6909 12.023 42.656 12.013 42.6161C12.0005 42.5688 11.998 42.5177 11.9931 42.4691C11.9881 42.4317 11.9781 42.3943 11.9781 42.3569V15.5801L6.18848 12.2446L1.99677 9.83281ZM12.9777 2.36177L2.99764 8.10652L12.9752 13.8513L22.9541 8.10527L12.9752 2.36177H12.9777ZM18.1678 38.2138L23.9574 34.8809V9.83281L19.7657 12.2459L13.9749 15.5801V40.6281L18.1678 38.2138ZM48.9133 9.14105L38.9344 14.8858L48.9133 20.6305L58.8909 14.8846L48.9133 9.14105ZM47.9149 22.3593L42.124 19.0252L37.9323 16.6121V27.9844L43.7219 31.3174L47.9149 33.7317V22.3593ZM24.9533 47.987L39.59 39.631L46.9065 35.4555L36.9352 29.7145L25.4544 36.3242L14.9907 42.3482L24.9533 47.987Z"
-                            fill="currentColor" />
-                    </svg>
-                </div>
-                @if (Route::has('login'))
-                    <nav class=" flex flex-1 justify-end">
-                        @auth
-                            <x-landing.navigation />
-                        @else
-                            <a href="{{ route('login') }}"
-                                class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#56478e]">
-                                Log in
-                            </a>
+    </section>
 
-                            @if (Route::has('register'))
-                                <a href="{{ route('register') }}"
-                                    class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#56478e]">
-                                    Register
-                                </a>
-                            @endif
-                        @endauth
-                    </nav>
-                @endif
-            </header>
 
-            <main class="mt-2">
-                <div class="grid gap-6 lg:grid-cols-2 lg:gap-8">
-                    <a href="https://laravel.com/docs" id="docs-card"
-                        class="flex flex-col items-start gap-6 overflow-hidden rounded-lg bg-white p-6 shadow-[0px_14px_34px_0px_rgba(0,0,0,0.08)] ring-1 ring-white/[0.05] transition duration-300 hover:text-black/70 hover:ring-black/20 focus:outine-none focus-visible:ring-[#56478e] md:row-span-3 lg:p-10 lg:pb-10">
-                        <div id="screenshot-container" class="relative flex w-full flex-1 items-stretch">
-                            <img src="{{ asset('assets/img/lightbox-14.jpeg') }}" alt="Laravel documentation screenshot"
-                                class="aspect-video h-full w-full flex-1 rounded-[10px] object-top object-cover drop-shadow-[0px_4px_34px_rgba(0,0,0,0.06)]"
-                                onerror="
-                                            document.getElementById('screenshot-container').classList.add('!hidden');
-                                            document.getElementById('docs-card').classList.add('!row-span-1');
-                                            document.getElementById('docs-card-content').classList.add('!flex-row');
-                                            document.getElementById('background').classList.add('!hidden');
-                                        " />
-                            <img src="{{ asset('assets/img/lightbox-14.jpeg') }}" alt="Laravel documentation screenshot"
-                                class="hidden aspect-video h-full w-full flex-1 rounded-[10px] object-top object-cover drop-shadow-[0px_4px_34px_rgba(0,0,0,0.25)]" />
+    <!-- Card Slider Section -->
+    <section id="rekomendasi" class="py-20 bg-white">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold">Rekomendasi</h2>
+        </div>
+        <div class="swiper-container mySwiper">
+            <div class="swiper-wrapper md:mx-[100px]" data-aos="fade-left" data-aos-anchor="#example-anchor"
+                data-aos-offset="500" data-aos-duration="500">
+                <!-- Slide 1 -->
+                @for ($i = 0; $i < 10; $i++)
+                    <div class="swiper-slide max-w-lg my-8" onclick="my_modal_3.showModal()">
+                        <div class="relative bg-white shadow-xl rounded-lg overflow-hidden">
+                            <!-- Persegi dengan nomor di pojok kiri atas -->
                             <div
-                                class="absolute -bottom-16 -left-16 h-40 w-[calc(100%+8rem)] bg-gradient-to-b from-transparent via-white to-white">
+                                class="absolute top-0 left-0 bg-yellow-500 text-white text-sm font-bold py-3 px-3 rounded-br-lg z-10">
+                                {{ $i + 1 }}
                             </div>
-                        </div>
-
-                        <div class="relative flex items-center gap-6 lg:items-end">
-                            <div id="docs-card-content" class="flex items-start gap-6 lg:flex-col">
+                            <!-- Gambar -->
+                            <div class="relative h-80">
+                                <img src="{{ asset('assets/img/lightbox-1.jpg') }}" alt="Image Title"
+                                    class="w-full h-full object-cover">
+                                <!-- Bayangan di bawah gambar untuk memperjelas title -->
                                 <div
-                                    class="flex size-12 shrink-0 items-center justify-center rounded-full bg-[#56478e]/10 sm:size-16">
-                                    <svg class="size-5 sm:size-6" xmlns="http://www.w3.org/2000/svg" fill="none"
-                                        viewBox="0 0 24 24">
-                                        <path fill="#56478e"
-                                            d="M23 4a1 1 0 0 0-1.447-.894L12.224 7.77a.5.5 0 0 1-.448 0L2.447 3.106A1 1 0 0 0 1 4v13.382a1.99 1.99 0 0 0 1.105 1.79l9.448 4.728c.14.065.293.1.447.1.154-.005.306-.04.447-.105l9.453-4.724a1.99 1.99 0 0 0 1.1-1.789V4ZM3 6.023a.25.25 0 0 1 .362-.223l7.5 3.75a.251.251 0 0 1 .138.223v11.2a.25.25 0 0 1-.362.224l-7.5-3.75a.25.25 0 0 1-.138-.22V6.023Zm18 11.2a.25.25 0 0 1-.138.224l-7.5 3.75a.249.249 0 0 1-.329-.099.249.249 0 0 1-.033-.12V9.772a.251.251 0 0 1 .138-.224l7.5-3.75a.25.25 0 0 1 .362.224v11.2Z" />
-                                        <path fill="#56478e"
-                                            d="m3.55 1.893 8 4.048a1.008 1.008 0 0 0 .9 0l8-4.048a1 1 0 0 0-.9-1.785l-7.322 3.706a.506.506 0 0 1-.452 0L4.454.108a1 1 0 0 0-.9 1.785H3.55Z" />
-                                    </svg>
-                                </div>
-
-                                <div class="pt-3 sm:pt-5 lg:pt-0">
-                                    <h2 class="text-xl font-semibold text-black">Documentation</h2>
-
-                                    <p class="mt-4 text-sm/relaxed">
-                                        Laravel has wonderful documentation covering every aspect of the framework.
-                                        Whether you are a newcomer or have prior experience with Laravel, we
-                                        recommend reading our documentation from beginning to end.
-                                    </p>
+                                    class="absolute inset-0 flex items-end justify-start p-4 bg-gradient-to-t from-black to-transparent">
+                                    <h3 class="text-lg font-semibold text-white">Wisata ...</h3>
                                 </div>
                             </div>
-
-                            <svg class="size-6 shrink-0 stroke-[#56478e]" xmlns="http://www.w3.org/2000/svg"
-                                fill="none" viewBox="0 0 24 24" stroke-width="1.5">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
-                            </svg>
-                        </div>
-                    </a>
-
-                    <a href="https://laracasts.com"
-                        class="flex items-start gap-4 rounded-lg bg-white p-6 shadow-[0px_14px_34px_0px_rgba(0,0,0,0.08)] ring-1 ring-white/[0.05] transition duration-300 hover:text-black/70 hover:ring-black/20 focus:outline-none focus-visible:ring-[#56478e] lg:pb-10">
-                        <div
-                            class="flex size-12 shrink-0 items-center justify-center rounded-full bg-[#56478e]/10 sm:size-16">
-                            <svg class="size-5 sm:size-6" xmlns="http://www.w3.org/2000/svg" fill="none"
-                                viewBox="0 0 24 24">
-                                <g fill="#56478e">
-                                    <path
-                                        d="M24 8.25a.5.5 0 0 0-.5-.5H.5a.5.5 0 0 0-.5.5v12a2.5 2.5 0 0 0 2.5 2.5h19a2.5 2.5 0 0 0 2.5-2.5v-12Zm-7.765 5.868a1.221 1.221 0 0 1 0 2.264l-6.626 2.776A1.153 1.153 0 0 1 8 18.123v-5.746a1.151 1.151 0 0 1 1.609-1.035l6.626 2.776ZM19.564 1.677a.25.25 0 0 0-.177-.427H15.6a.106.106 0 0 0-.072.03l-4.54 4.543a.25.25 0 0 0 .177.427h3.783c.027 0 .054-.01.073-.03l4.543-4.543ZM22.071 1.318a.047.047 0 0 0-.045.013l-4.492 4.492a.249.249 0 0 0 .038.385.25.25 0 0 0 .14.042h5.784a.5.5 0 0 0 .5-.5v-2a2.5 2.5 0 0 0-1.925-2.432ZM13.014 1.677a.25.25 0 0 0-.178-.427H9.101a.106.106 0 0 0-.073.03l-4.54 4.543a.25.25 0 0 0 .177.427H8.4a.106.106 0 0 0 .073-.03l4.54-4.543ZM6.513 1.677a.25.25 0 0 0-.177-.427H2.5A2.5 2.5 0 0 0 0 3.75v2a.5.5 0 0 0 .5.5h1.4a.106.106 0 0 0 .073-.03l4.54-4.543Z" />
-                                </g>
-                            </svg>
-                        </div>
-
-                        <div class="pt-3 sm:pt-5">
-                            <h2 class="text-xl font-semibold text-black">Laracasts</h2>
-
-                            <p class="mt-4 text-sm/relaxed">
-                                Laracasts offers thousands of video tutorials on Laravel, PHP, and JavaScript
-                                development. Check them out, see for yourself, and massively level up your
-                                development skills in the process.
-                            </p>
-                        </div>
-
-                        <svg class="size-6 shrink-0 self-center stroke-[#56478e]" xmlns="http://www.w3.org/2000/svg"
-                            fill="none" viewBox="0 0 24 24" stroke-width="1.5">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
-                        </svg>
-                    </a>
-
-                    <a href="https://laravel-news.com"
-                        class="flex items-start gap-4 rounded-lg bg-white p-6 shadow-[0px_14px_34px_0px_rgba(0,0,0,0.08)] ring-1 ring-white/[0.05] transition duration-300 hover:text-black/70 hover:ring-black/20 focus:outline-none focus-visible:ring-[#56478e] lg:pb-10">
-                        <div
-                            class="flex size-12 shrink-0 items-center justify-center rounded-full bg-[#56478e]/10 sm:size-16">
-                            <svg class="size-5 sm:size-6" xmlns="http://www.w3.org/2000/svg" fill="none"
-                                viewBox="0 0 24 24">
-                                <g fill="#56478e">
-                                    <path
-                                        d="M8.75 4.5H5.5c-.69 0-1.25.56-1.25 1.25v4.75c0 .69.56 1.25 1.25 1.25h3.25c.69 0 1.25-.56 1.25-1.25V5.75c0-.69-.56-1.25-1.25-1.25Z" />
-                                    <path
-                                        d="M24 10a3 3 0 0 0-3-3h-2V2.5a2 2 0 0 0-2-2H2a2 2 0 0 0-2 2V20a3.5 3.5 0 0 0 3.5 3.5h17A3.5 3.5 0 0 0 24 20V10ZM3.5 21.5A1.5 1.5 0 0 1 2 20V3a.5.5 0 0 1 .5-.5h14a.5.5 0 0 1 .5.5v17c0 .295.037.588.11.874a.5.5 0 0 1-.484.625L3.5 21.5ZM22 20a1.5 1.5 0 1 1-3 0V9.5a.5.5 0 0 1 .5-.5H21a1 1 0 0 1 1 1v10Z" />
-                                    <path
-                                        d="M12.751 6.047h2a.75.75 0 0 1 .75.75v.5a.75.75 0 0 1-.75.75h-2A.75.75 0 0 1 12 7.3v-.5a.75.75 0 0 1 .751-.753ZM12.751 10.047h2a.75.75 0 0 1 .75.75v.5a.75.75 0 0 1-.75.75h-2A.75.75 0 0 1 12 11.3v-.5a.75.75 0 0 1 .751-.753ZM4.751 14.047h10a.75.75 0 0 1 .75.75v.5a.75.75 0 0 1-.75.75h-10A.75.75 0 0 1 4 15.3v-.5a.75.75 0 0 1 .751-.753ZM4.75 18.047h7.5a.75.75 0 0 1 .75.75v.5a.75.75 0 0 1-.75.75h-7.5A.75.75 0 0 1 4 19.3v-.5a.75.75 0 0 1 .75-.753Z" />
-                                </g>
-                            </svg>
-                        </div>
-
-                        <div class="pt-3 sm:pt-5">
-                            <h2 class="text-xl font-semibold text-black">Laravel News</h2>
-
-                            <p class="mt-4 text-sm/relaxed">
-                                Laravel News is a community driven portal and newsletter aggregating all of the
-                                latest and most important news in the Laravel ecosystem, including new package
-                                releases and tutorials.
-                            </p>
-                        </div>
-
-                        <svg class="size-6 shrink-0 self-center stroke-[#56478e]" xmlns="http://www.w3.org/2000/svg"
-                            fill="none" viewBox="0 0 24 24" stroke-width="1.5">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
-                        </svg>
-                    </a>
-
-                    <div
-                        class="flex items-start gap-4 rounded-lg bg-white p-6 shadow-[0px_14px_34px_0px_rgba(0,0,0,0.08)] ring-1 ring-white/[0.05] transition duration-300 hover:text-black/70 hover:ring-black/20 focus:outline-none focus-visible:ring-[#56478e] lg:pb-10">
-                        <div
-                            class="flex size-12 shrink-0 items-center justify-center rounded-full bg-[#56478e]/10 sm:size-16">
-                            <svg class="size-5 sm:size-6" xmlns="http://www.w3.org/2000/svg" fill="none"
-                                viewBox="0 0 24 24">
-                                <g fill="#56478e">
-                                    <path
-                                        d="M16.597 12.635a.247.247 0 0 0-.08-.237 2.234 2.234 0 0 1-.769-1.68c.001-.195.03-.39.084-.578a.25.25 0 0 0-.09-.267 8.8 8.8 0 0 0-4.826-1.66.25.25 0 0 0-.268.181 2.5 2.5 0 0 1-2.4 1.824.045.045 0 0 0-.045.037 12.255 12.255 0 0 0-.093 3.86.251.251 0 0 0 .208.214c2.22.366 4.367 1.08 6.362 2.118a.252.252 0 0 0 .32-.079 10.09 10.09 0 0 0 1.597-3.733ZM13.616 17.968a.25.25 0 0 0-.063-.407A19.697 19.697 0 0 0 8.91 15.98a.25.25 0 0 0-.287.325c.151.455.334.898.548 1.328.437.827.981 1.594 1.619 2.28a.249.249 0 0 0 .32.044 29.13 29.13 0 0 0 2.506-1.99ZM6.303 14.105a.25.25 0 0 0 .265-.274 13.048 13.048 0 0 1 .205-4.045.062.062 0 0 0-.022-.07 2.5 2.5 0 0 1-.777-.982.25.25 0 0 0-.271-.149 11 11 0 0 0-5.6 2.815.255.255 0 0 0-.075.163c-.008.135-.02.27-.02.406.002.8.084 1.598.246 2.381a.25.25 0 0 0 .303.193 19.924 19.924 0 0 1 5.746-.438ZM9.228 20.914a.25.25 0 0 0 .1-.393 11.53 11.53 0 0 1-1.5-2.22 12.238 12.238 0 0 1-.91-2.465.248.248 0 0 0-.22-.187 18.876 18.876 0 0 0-5.69.33.249.249 0 0 0-.179.336c.838 2.142 2.272 4 4.132 5.353a.254.254 0 0 0 .15.048c1.41-.01 2.807-.282 4.117-.802ZM18.93 12.957l-.005-.008a.25.25 0 0 0-.268-.082 2.21 2.21 0 0 1-.41.081.25.25 0 0 0-.217.2c-.582 2.66-2.127 5.35-5.75 7.843a.248.248 0 0 0-.09.299.25.25 0 0 0 .065.091 28.703 28.703 0 0 0 2.662 2.12.246.246 0 0 0 .209.037c2.579-.701 4.85-2.242 6.456-4.378a.25.25 0 0 0 .048-.189 13.51 13.51 0 0 0-2.7-6.014ZM5.702 7.058a.254.254 0 0 0 .2-.165A2.488 2.488 0 0 1 7.98 5.245a.093.093 0 0 0 .078-.062 19.734 19.734 0 0 1 3.055-4.74.25.25 0 0 0-.21-.41 12.009 12.009 0 0 0-10.4 8.558.25.25 0 0 0 .373.281 12.912 12.912 0 0 1 4.826-1.814ZM10.773 22.052a.25.25 0 0 0-.28-.046c-.758.356-1.55.635-2.365.833a.25.25 0 0 0-.022.48c1.252.43 2.568.65 3.893.65.1 0 .2 0 .3-.008a.25.25 0 0 0 .147-.444c-.526-.424-1.1-.917-1.673-1.465ZM18.744 8.436a.249.249 0 0 0 .15.228 2.246 2.246 0 0 1 1.352 2.054c0 .337-.08.67-.23.972a.25.25 0 0 0 .042.28l.007.009a15.016 15.016 0 0 1 2.52 4.6.25.25 0 0 0 .37.132.25.25 0 0 0 .096-.114c.623-1.464.944-3.039.945-4.63a12.005 12.005 0 0 0-5.78-10.258.25.25 0 0 0-.373.274c.547 2.109.85 4.274.901 6.453ZM9.61 5.38a.25.25 0 0 0 .08.31c.34.24.616.561.8.935a.25.25 0 0 0 .3.127.631.631 0 0 1 .206-.034c2.054.078 4.036.772 5.69 1.991a.251.251 0 0 0 .267.024c.046-.024.093-.047.141-.067a.25.25 0 0 0 .151-.23A29.98 29.98 0 0 0 15.957.764a.25.25 0 0 0-.16-.164 11.924 11.924 0 0 0-2.21-.518.252.252 0 0 0-.215.076A22.456 22.456 0 0 0 9.61 5.38Z" />
-                                </g>
-                            </svg>
-                        </div>
-
-                        <div class="pt-3 sm:pt-5">
-                            <h2 class="text-xl font-semibold text-black">Vibrant Ecosystem</h2>
-
-                            <p class="mt-4 text-sm/relaxed">
-                                Laravel's robust library of first-party tools and libraries, such as <a
-                                    href="https://forge.laravel.com"
-                                    class="rounded-sm underline hover:text-black focus:outline-none focus-visible:ring-1 focus-visible:ring-[#56478e]">Forge</a>,
-                                <a href="https://vapor.laravel.com"
-                                    class="rounded-sm underline hover:text-black focus:outline-none focus-visible:ring-1 focus-visible:ring-[#56478e]">Vapor</a>,
-                                <a href="https://nova.laravel.com"
-                                    class="rounded-sm underline hover:text-black focus:outline-none focus-visible:ring-1 focus-visible:ring-[#56478e]">Nova</a>,
-                                <a href="https://envoyer.io"
-                                    class="rounded-sm underline hover:text-black focus:outline-none focus-visible:ring-1 focus-visible:ring-[#56478e]">Envoyer</a>,
-                                and <a href="https://herd.laravel.com"
-                                    class="rounded-sm underline hover:text-black focus:outline-none focus-visible:ring-1 focus-visible:ring-[#56478e]">Herd</a>
-                                help you take your projects to the next level. Pair them with powerful open source
-                                libraries like <a href="https://laravel.com/docs/billing"
-                                    class="rounded-sm underline hover:text-black focus:outline-none focus-visible:ring-1 focus-visible:ring-[#56478e]">Cashier</a>,
-                                <a href="https://laravel.com/docs/dusk"
-                                    class="rounded-sm underline hover:text-black focus:outline-none focus-visible:ring-1 focus-visible:ring-[#56478e]">Dusk</a>,
-                                <a href="https://laravel.com/docs/broadcasting"
-                                    class="rounded-sm underline hover:text-black focus:outline-none focus-visible:ring-1 focus-visible:ring-[#56478e]">Echo</a>,
-                                <a href="https://laravel.com/docs/horizon"
-                                    class="rounded-sm underline hover:text-black focus:outline-none focus-visible:ring-1 focus-visible:ring-[#56478e]">Horizon</a>,
-                                <a href="https://laravel.com/docs/sanctum"
-                                    class="rounded-sm underline hover:text-black focus:outline-none focus-visible:ring-1 focus-visible:ring-[#56478e]">Sanctum</a>,
-                                <a href="https://laravel.com/docs/telescope"
-                                    class="rounded-sm underline hover:text-black focus:outline-none focus-visible:ring-1 focus-visible:ring-[#56478e]">Telescope</a>,
-                                and more.
-                            </p>
                         </div>
                     </div>
-                </div>
-            </main>
+                @endfor
 
-            <footer class="py-16 text-center text-sm text-black">
-                Laravel v{{ Illuminate\Foundation\Application::VERSION }} (PHP v{{ PHP_VERSION }})
-            </footer>
+            </div>
+            <!-- Navigation buttons -->
+            <div class="swiper-pagination mt-5"></div>
         </div>
-    </div>
+    </section>
+
+    <dialog id="my_modal_3" class="modal">
+        <div class="modal-box w-11/12 max-w-5xl p-0 h-[90vh]">
+            <form method="dialog">
+                <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+            </form>
+            <!-- Grid untuk layout 2 bagian -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 h-full">
+                <!-- Bagian kiri: Gambar full yang tidak bisa di-scroll -->
+                <div class="h-full overflow-hidden">
+                    <img src="{{ asset('assets/img/lightbox-1.jpg') }}" alt="Placeholder Image"
+                        class="w-full h-full object-cover rounded-lg">
+                </div>
+                <!-- Bagian kanan: Konten dengan scroll vertikal -->
+                <div class="h-full overflow-y-scroll p-4 custom-scrollbar">
+                    <p id="location" class="d-flex">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                            fill="none">
+                            <g style="mix-blend-mode:luminosity">
+                                <path
+                                    d="M18.27 6C19.28 8.17 19.05 10.73 17.94 12.81C17 14.5 15.65 15.93 14.5 17.5C14 18.2 13.5 18.95 13.13 19.76C13 20.03 12.91 20.31 12.81 20.59C12.71 20.87 12.62 21.15 12.53 21.43C12.44 21.69 12.33 22 12 22C11.61 22 11.5 21.56 11.42 21.26C11.18 20.53 10.94 19.83 10.57 19.16C10.15 18.37 9.61996 17.64 9.07996 16.93L18.27 6ZM9.11996 8.42L5.81996 12.34C6.42996 13.63 7.33996 14.73 8.20996 15.83C8.41996 16.08 8.62996 16.34 8.82996 16.61L13 11.67L12.96 11.68C11.5 12.18 9.87996 11.44 9.29996 10C9.21996 9.83 9.15996 9.63 9.11996 9.43C9.06401 9.09901 9.06401 8.76099 9.11996 8.43V8.42ZM6.57996 4.62L6.56996 4.63C4.94996 6.68 4.66996 9.53 5.63996 11.94L9.62996 7.2L9.57996 7.15L6.57996 4.62ZM14.22 2.36L11 6.17L11.04 6.16C12.38 5.7 13.88 6.28 14.56 7.5C14.71 7.78 14.83 8.08 14.87 8.38C14.93 8.76 14.95 9.03 14.88 9.4V9.41L18.08 5.61C17.2426 4.09013 15.8705 2.93546 14.23 2.37L14.22 2.36ZM9.88996 6.89L13.8 2.24L13.76 2.23C13.18 2.08 12.59 2 12 2C10.03 2 8.16996 2.85 6.84996 4.31L6.82996 4.32L9.88996 6.89Z"
+                                    fill="black" />
+                            </g>
+                        </svg>
+                        <span class="font-medium">Temanah, Tlangoh, Kec. Tj. Bumi,</span>
+                    </p>
+                    <h3 class="text-4xl font-medium my-3">Pantai Telangoh</h3>
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td class="mr-2">Biaya</td>
+                                <td>: 10.000</td>
+                            </tr>
+                            <tr>
+                                <td class="mr-2">Fasilitas</td>
+                                <td>: Lahan Parkir, Masjid, Toilet</td>
+                            </tr>
+                            <tr>
+                                <td class="mr-2">Keamanan</td>
+                                <td>: 5/5</td>
+                            </tr>
+                            <tr>
+                                <td class="mr-2">Kondisi Jalan</td>
+                                <td>: Bagus</td>
+                            </tr>
+                            <tr>
+                                <td class="mr-2">Kebersihan</td>
+                                <td>: Bagus</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p class="py-4">Pantai Tlangoh, salah satu destinasi wisata populer di Bangkalan, Madura,
+                        menawarkan panorama alam yang menakjubkan dengan hamparan pasir putih, air laut biru, dan angin
+                        sepoi-sepoi yang menyegarkan. Wisatawan dapat menikmati berbagai aktivitas seperti bermain
+                        pasir, berenang, berfoto di spot menarik seperti ayunan, jembatan kayu, dan gazebo, atau sekadar
+                        bersantai di tepi pantai. Terletak sekitar 40 km dari kota Bangkalan, pantai ini dapat dijangkau
+                        dengan kendaraan pribadi atau umum dan buka setiap hari selama 24 jam, dengan tiket masuk yang
+                        terjangkau sebesar 3.500 rupiah per orang.</p>
+
+                    <div id="googleMap" class="rounded-lg"></div>
+
+                    {{-- rating & feedback --}}
+
+                    <section class="py-5 relative" id="ratingfeback">
+                        <div class="w-full">
+                            <div class="w-full">
+                                <h2 class="font-bold leading-10 text-black mb-8 text-center text-2xl">
+                                    Customer reviews &
+                                    rating</h2>
+                                <div class="grid mb-11  place-content-center">
+                                    <div class="w-full col-span-12 items-center my-3">
+                                        <div class="grid grid-cols-12 h-full p-2 rounded-3xl bg-gray-100 w-full">
+                                            <div class="col-span-12 flex items-center justify-center">
+                                                <div
+                                                    class="py-3 border-gray-200 flex items-center justify-center flex-col">
+                                                    <h2
+                                                        class="font-manrope font-bold text-3xl text-black text-center mb-2">
+                                                        4.8</h2>
+                                                    <div class="flex items-center gap-3 mb-2">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="36"
+                                                            height="36" viewBox="0 0 36 36" fill="none"
+                                                            class="h-5 w-5">
+                                                            <g clip-path="url(#clip0_13624_3137)">
+                                                                <path
+                                                                    d="M17.1033 2.71738C17.4701 1.97413 18.5299 1.97413 18.8967 2.71738L23.0574 11.1478C23.2031 11.4429 23.4846 11.6475 23.8103 11.6948L33.1139 13.0467C33.9341 13.1659 34.2616 14.1739 33.6681 14.7524L26.936 21.3146C26.7003 21.5443 26.5927 21.8753 26.6484 22.1997L28.2376 31.4656C28.3777 32.2825 27.5203 32.9055 26.7867 32.5198L18.4653 28.145C18.174 27.9919 17.826 27.9919 17.5347 28.145L9.21334 32.5198C8.47971 32.9055 7.62228 32.2825 7.76239 31.4656L9.35162 22.1997C9.40726 21.8753 9.29971 21.5443 9.06402 21.3146L2.33193 14.7524C1.73841 14.1739 2.06593 13.1659 2.88615 13.0467L12.1897 11.6948C12.5154 11.6475 12.7969 11.4429 12.9426 11.1478L17.1033 2.71738Z"
+                                                                    fill="#FBBF24" />
+                                                            </g>
+                                                            <defs>
+                                                                <clipPath id="clip0_13624_3137">
+                                                                    <rect width="36" height="36"
+                                                                        fill="white" />
+                                                                </clipPath>
+                                                            </defs>
+                                                        </svg>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="36"
+                                                            height="36" viewBox="0 0 36 36" fill="none"
+                                                            class="h-5 w-5">
+                                                            <g clip-path="url(#clip0_13624_3137)">
+                                                                <path
+                                                                    d="M17.1033 2.71738C17.4701 1.97413 18.5299 1.97413 18.8967 2.71738L23.0574 11.1478C23.2031 11.4429 23.4846 11.6475 23.8103 11.6948L33.1139 13.0467C33.9341 13.1659 34.2616 14.1739 33.6681 14.7524L26.936 21.3146C26.7003 21.5443 26.5927 21.8753 26.6484 22.1997L28.2376 31.4656C28.3777 32.2825 27.5203 32.9055 26.7867 32.5198L18.4653 28.145C18.174 27.9919 17.826 27.9919 17.5347 28.145L9.21334 32.5198C8.47971 32.9055 7.62228 32.2825 7.76239 31.4656L9.35162 22.1997C9.40726 21.8753 9.29971 21.5443 9.06402 21.3146L2.33193 14.7524C1.73841 14.1739 2.06593 13.1659 2.88615 13.0467L12.1897 11.6948C12.5154 11.6475 12.7969 11.4429 12.9426 11.1478L17.1033 2.71738Z"
+                                                                    fill="#FBBF24" />
+                                                            </g>
+                                                            <defs>
+                                                                <clipPath id="clip0_13624_3137">
+                                                                    <rect width="36" height="36"
+                                                                        fill="white" />
+                                                                </clipPath>
+                                                            </defs>
+                                                        </svg>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="36"
+                                                            height="36" viewBox="0 0 36 36" fill="none"
+                                                            class="h-5 w-5">
+                                                            <g clip-path="url(#clip0_13624_3137)">
+                                                                <path
+                                                                    d="M17.1033 2.71738C17.4701 1.97413 18.5299 1.97413 18.8967 2.71738L23.0574 11.1478C23.2031 11.4429 23.4846 11.6475 23.8103 11.6948L33.1139 13.0467C33.9341 13.1659 34.2616 14.1739 33.6681 14.7524L26.936 21.3146C26.7003 21.5443 26.5927 21.8753 26.6484 22.1997L28.2376 31.4656C28.3777 32.2825 27.5203 32.9055 26.7867 32.5198L18.4653 28.145C18.174 27.9919 17.826 27.9919 17.5347 28.145L9.21334 32.5198C8.47971 32.9055 7.62228 32.2825 7.76239 31.4656L9.35162 22.1997C9.40726 21.8753 9.29971 21.5443 9.06402 21.3146L2.33193 14.7524C1.73841 14.1739 2.06593 13.1659 2.88615 13.0467L12.1897 11.6948C12.5154 11.6475 12.7969 11.4429 12.9426 11.1478L17.1033 2.71738Z"
+                                                                    fill="#FBBF24" />
+                                                            </g>
+                                                            <defs>
+                                                                <clipPath id="clip0_13624_3137">
+                                                                    <rect width="36" height="36"
+                                                                        fill="white" />
+                                                                </clipPath>
+                                                            </defs>
+                                                        </svg>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="36"
+                                                            height="36" viewBox="0 0 36 36" fill="none"
+                                                            class="h-5 w-5">
+                                                            <g clip-path="url(#clip0_13624_3137)">
+                                                                <path
+                                                                    d="M17.1033 2.71738C17.4701 1.97413 18.5299 1.97413 18.8967 2.71738L23.0574 11.1478C23.2031 11.4429 23.4846 11.6475 23.8103 11.6948L33.1139 13.0467C33.9341 13.1659 34.2616 14.1739 33.6681 14.7524L26.936 21.3146C26.7003 21.5443 26.5927 21.8753 26.6484 22.1997L28.2376 31.4656C28.3777 32.2825 27.5203 32.9055 26.7867 32.5198L18.4653 28.145C18.174 27.9919 17.826 27.9919 17.5347 28.145L9.21334 32.5198C8.47971 32.9055 7.62228 32.2825 7.76239 31.4656L9.35162 22.1997C9.40726 21.8753 9.29971 21.5443 9.06402 21.3146L2.33193 14.7524C1.73841 14.1739 2.06593 13.1659 2.88615 13.0467L12.1897 11.6948C12.5154 11.6475 12.7969 11.4429 12.9426 11.1478L17.1033 2.71738Z"
+                                                                    fill="#FBBF24" />
+                                                            </g>
+                                                            <defs>
+                                                                <clipPath id="clip0_13624_3137">
+                                                                    <rect width="36" height="36"
+                                                                        fill="white" />
+                                                                </clipPath>
+                                                            </defs>
+                                                        </svg>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="36"
+                                                            height="36" viewBox="0 0 36 36" fill="none"
+                                                            class="h-5 w-5">
+                                                            <g clip-path="url(#clip0_13624_3137)">
+                                                                <path
+                                                                    d="M17.1033 2.71738C17.4701 1.97413 18.5299 1.97413 18.8967 2.71738L23.0574 11.1478C23.2031 11.4429 23.4846 11.6475 23.8103 11.6948L33.1139 13.0467C33.9341 13.1659 34.2616 14.1739 33.6681 14.7524L26.936 21.3146C26.7003 21.5443 26.5927 21.8753 26.6484 22.1997L28.2376 31.4656C28.3777 32.2825 27.5203 32.9055 26.7867 32.5198L18.4653 28.145C18.174 27.9919 17.826 27.9919 17.5347 28.145L9.21334 32.5198C8.47971 32.9055 7.62228 32.2825 7.76239 31.4656L9.35162 22.1997C9.40726 21.8753 9.29971 21.5443 9.06402 21.3146L2.33193 14.7524C1.73841 14.1739 2.06593 13.1659 2.88615 13.0467L12.1897 11.6948C12.5154 11.6475 12.7969 11.4429 12.9426 11.1478L17.1033 2.71738Z"
+                                                                    fill="#FBBF24" />
+                                                            </g>
+                                                            <defs>
+                                                                <clipPath id="clip0_13624_3137">
+                                                                    <rect width="36" height="36"
+                                                                        fill="white" />
+                                                                </clipPath>
+                                                            </defs>
+                                                        </svg>
+                                                    </div>
+                                                    <p class="font-normal text-lg leading-8 text-gray-400">46 Ratings
+                                                    </p>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="w-full col-span-12 items-center my-3 ">
+                                        <div class="box flex flex-col w-full">
+                                            <div class="flex items-center w-full">
+                                                <p class="font-medium text-lg py-[1px] text-black mr-[2px]">5</p>
+                                                <svg width="20" height="20" viewBox="0 0 20 20"
+                                                    fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <g clip-path="url(#clip0_12042_8589)">
+                                                        <path
+                                                            d="M9.10326 2.31699C9.47008 1.57374 10.5299 1.57374 10.8967 2.31699L12.7063 5.98347C12.8519 6.27862 13.1335 6.48319 13.4592 6.53051L17.5054 7.11846C18.3256 7.23765 18.6531 8.24562 18.0596 8.82416L15.1318 11.6781C14.8961 11.9079 14.7885 12.2389 14.8442 12.5632L15.5353 16.5931C15.6754 17.41 14.818 18.033 14.0844 17.6473L10.4653 15.7446C10.174 15.5915 9.82598 15.5915 9.53466 15.7446L5.91562 17.6473C5.18199 18.033 4.32456 17.41 4.46467 16.5931L5.15585 12.5632C5.21148 12.2389 5.10393 11.9079 4.86825 11.6781L1.94038 8.82416C1.34687 8.24562 1.67438 7.23765 2.4946 7.11846L6.54081 6.53051C6.86652 6.48319 7.14808 6.27862 7.29374 5.98347L9.10326 2.31699Z"
+                                                            fill="#FBBF24" />
+                                                    </g>
+                                                    <defs>
+                                                        <clipPath id="clip0_12042_8589">
+                                                            <rect width="20" height="20" fill="white" />
+                                                        </clipPath>
+                                                    </defs>
+                                                </svg>
+                                                <p
+                                                    class="h-2 w-full sm:min-w-[278px] rounded-[30px] bg-gray-200 ml-3 mr-3">
+                                                    <span
+                                                        class="h-full w-[30%] rounded-[30px] bg-indigo-500 flex"></span>
+                                                </p>
+                                                <p class="font-medium text-lg py-[1px] text-black mr-[2px]">30</p>
+                                            </div>
+                                            <div class="flex items-center w-full">
+                                                <p class="font-medium text-lg py-[1px] text-black mr-[2px]">4</p>
+                                                <svg width="20" height="20" viewBox="0 0 20 20"
+                                                    fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <g clip-path="url(#clip0_12042_8589)">
+                                                        <path
+                                                            d="M9.10326 2.31699C9.47008 1.57374 10.5299 1.57374 10.8967 2.31699L12.7063 5.98347C12.8519 6.27862 13.1335 6.48319 13.4592 6.53051L17.5054 7.11846C18.3256 7.23765 18.6531 8.24562 18.0596 8.82416L15.1318 11.6781C14.8961 11.9079 14.7885 12.2389 14.8442 12.5632L15.5353 16.5931C15.6754 17.41 14.818 18.033 14.0844 17.6473L10.4653 15.7446C10.174 15.5915 9.82598 15.5915 9.53466 15.7446L5.91562 17.6473C5.18199 18.033 4.32456 17.41 4.46467 16.5931L5.15585 12.5632C5.21148 12.2389 5.10393 11.9079 4.86825 11.6781L1.94038 8.82416C1.34687 8.24562 1.67438 7.23765 2.4946 7.11846L6.54081 6.53051C6.86652 6.48319 7.14808 6.27862 7.29374 5.98347L9.10326 2.31699Z"
+                                                            fill="#FBBF24" />
+                                                    </g>
+                                                    <defs>
+                                                        <clipPath id="clip0_12042_8589">
+                                                            <rect width="20" height="20" fill="white" />
+                                                        </clipPath>
+                                                    </defs>
+                                                </svg>
+                                                <p
+                                                    class="h-2 w-full xl:min-w-[278px] rounded-[30px] bg-gray-200 ml-3 mr-3">
+                                                    <span
+                                                        class="h-full w-[40%] rounded-[30px] bg-indigo-500 flex"></span>
+                                                </p>
+                                                <p class="font-medium text-lg py-[1px] text-black mr-[2px]">40</p>
+                                            </div>
+                                            <div class="flex items-center">
+                                                <p class="font-medium text-lg py-[1px] text-black mr-[2px]">3</p>
+                                                <svg width="20" height="20" viewBox="0 0 20 20"
+                                                    fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <g clip-path="url(#clip0_12042_8589)">
+                                                        <path
+                                                            d="M9.10326 2.31699C9.47008 1.57374 10.5299 1.57374 10.8967 2.31699L12.7063 5.98347C12.8519 6.27862 13.1335 6.48319 13.4592 6.53051L17.5054 7.11846C18.3256 7.23765 18.6531 8.24562 18.0596 8.82416L15.1318 11.6781C14.8961 11.9079 14.7885 12.2389 14.8442 12.5632L15.5353 16.5931C15.6754 17.41 14.818 18.033 14.0844 17.6473L10.4653 15.7446C10.174 15.5915 9.82598 15.5915 9.53466 15.7446L5.91562 17.6473C5.18199 18.033 4.32456 17.41 4.46467 16.5931L5.15585 12.5632C5.21148 12.2389 5.10393 11.9079 4.86825 11.6781L1.94038 8.82416C1.34687 8.24562 1.67438 7.23765 2.4946 7.11846L6.54081 6.53051C6.86652 6.48319 7.14808 6.27862 7.29374 5.98347L9.10326 2.31699Z"
+                                                            fill="#FBBF24" />
+                                                    </g>
+                                                    <defs>
+                                                        <clipPath id="clip0_12042_8589">
+                                                            <rect width="20" height="20" fill="white" />
+                                                        </clipPath>
+                                                    </defs>
+                                                </svg>
+                                                <p
+                                                    class="h-2 w-full xl:min-w-[278px] rounded-[30px] bg-gray-200 ml-3 mr-3">
+                                                    <span
+                                                        class="h-full w-[20%] rounded-[30px] bg-indigo-500 flex"></span>
+                                                </p>
+                                                <p class="font-medium text-lg py-[1px] text-black mr-[2px]">20</p>
+                                            </div>
+                                            <div class="flex items-center">
+                                                <p class="font-medium text-lg py-[1px] text-black mr-[2px]">2</p>
+                                                <svg width="20" height="20" viewBox="0 0 20 20"
+                                                    fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <g clip-path="url(#clip0_12042_8589)">
+                                                        <path
+                                                            d="M9.10326 2.31699C9.47008 1.57374 10.5299 1.57374 10.8967 2.31699L12.7063 5.98347C12.8519 6.27862 13.1335 6.48319 13.4592 6.53051L17.5054 7.11846C18.3256 7.23765 18.6531 8.24562 18.0596 8.82416L15.1318 11.6781C14.8961 11.9079 14.7885 12.2389 14.8442 12.5632L15.5353 16.5931C15.6754 17.41 14.818 18.033 14.0844 17.6473L10.4653 15.7446C10.174 15.5915 9.82598 15.5915 9.53466 15.7446L5.91562 17.6473C5.18199 18.033 4.32456 17.41 4.46467 16.5931L5.15585 12.5632C5.21148 12.2389 5.10393 11.9079 4.86825 11.6781L1.94038 8.82416C1.34687 8.24562 1.67438 7.23765 2.4946 7.11846L6.54081 6.53051C6.86652 6.48319 7.14808 6.27862 7.29374 5.98347L9.10326 2.31699Z"
+                                                            fill="#FBBF24" />
+                                                    </g>
+                                                    <defs>
+                                                        <clipPath id="clip0_12042_8589">
+                                                            <rect width="20" height="20" fill="white" />
+                                                        </clipPath>
+                                                    </defs>
+                                                </svg>
+                                                <p
+                                                    class="h-2 w-full xl:min-w-[278px] rounded-[30px] bg-gray-200 ml-3 mr-3">
+                                                    <span
+                                                        class="h-full w-[16%] rounded-[30px] bg-indigo-500 flex"></span>
+                                                </p>
+                                                <p class="font-medium text-lg py-[1px] text-black mr-[2px]">16</p>
+                                            </div>
+                                            <div class="flex items-center">
+                                                <p class="font-medium text-lg py-[1px] text-black mr-[2px]">1</p>
+                                                <svg width="20" height="20" viewBox="0 0 20 20"
+                                                    fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <g clip-path="url(#clip0_12042_8589)">
+                                                        <path
+                                                            d="M9.10326 2.31699C9.47008 1.57374 10.5299 1.57374 10.8967 2.31699L12.7063 5.98347C12.8519 6.27862 13.1335 6.48319 13.4592 6.53051L17.5054 7.11846C18.3256 7.23765 18.6531 8.24562 18.0596 8.82416L15.1318 11.6781C14.8961 11.9079 14.7885 12.2389 14.8442 12.5632L15.5353 16.5931C15.6754 17.41 14.818 18.033 14.0844 17.6473L10.4653 15.7446C10.174 15.5915 9.82598 15.5915 9.53466 15.7446L5.91562 17.6473C5.18199 18.033 4.32456 17.41 4.46467 16.5931L5.15585 12.5632C5.21148 12.2389 5.10393 11.9079 4.86825 11.6781L1.94038 8.82416C1.34687 8.24562 1.67438 7.23765 2.4946 7.11846L6.54081 6.53051C6.86652 6.48319 7.14808 6.27862 7.29374 5.98347L9.10326 2.31699Z"
+                                                            fill="#FBBF24" />
+                                                    </g>
+                                                    <defs>
+                                                        <clipPath id="clip0_12042_8589">
+                                                            <rect width="20" height="20" fill="white" />
+                                                        </clipPath>
+                                                    </defs>
+                                                </svg>
+                                                <p
+                                                    class="h-2 w-full xl:min-w-[278px] rounded-[30px] bg-gray-200 ml-3 mr-3">
+                                                    <span
+                                                        class="h-full w-[16%] rounded-[30px] bg-indigo-500 flex"></span>
+                                                </p>
+                                                <p class="font-medium text-lg py-[1px] text-black mr-[2px]">8</p>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="pb-8 ">
+                                    <h4 class="font-semibold text-2xl leading-10 text-black">Most
+                                        helpful positive
+                                        review</h4>
+                                    @for ($i = 0; $i < 3; $i++)
+                                        <div id="items" class="border-b border-gray-200 py-3">
+                                            <div class="flex sm:items-center flex-col sm:flex-row justify-between ">
+                                                <div class="flex items-center gap-1">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="30"
+                                                        height="30" viewBox="0 0 30 30" fill="none"
+                                                        class="h-3 w-3">
+                                                        <g clip-path="url(#clip0_13624_2974)">
+                                                            <path
+                                                                d="M14.1033 2.56698C14.4701 1.82374 15.5299 1.82374 15.8967 2.56699L19.1757 9.21093C19.3214 9.50607 19.6029 9.71064 19.9287 9.75797L27.2607 10.8234C28.0809 10.9426 28.4084 11.9505 27.8149 12.5291L22.5094 17.7007C22.2737 17.9304 22.1662 18.2614 22.2218 18.5858L23.4743 25.8882C23.6144 26.7051 22.7569 27.3281 22.0233 26.9424L15.4653 23.4946C15.174 23.3415 14.826 23.3415 14.5347 23.4946L7.9767 26.9424C7.24307 27.3281 6.38563 26.7051 6.52574 25.8882L7.7782 18.5858C7.83384 18.2614 7.72629 17.9304 7.49061 17.7007L2.1851 12.5291C1.59159 11.9505 1.91909 10.9426 2.73931 10.8234L10.0713 9.75797C10.3971 9.71064 10.6786 9.50607 10.8243 9.21093L14.1033 2.56698Z"
+                                                                fill="#FBBF24" />
+                                                        </g>
+                                                        <defs>
+                                                            <clipPath id="clip0_13624_2974">
+                                                                <rect width="30" height="30" fill="white" />
+                                                            </clipPath>
+                                                        </defs>
+                                                    </svg>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="30"
+                                                        height="30" viewBox="0 0 30 30" fill="none"
+                                                        class="h-3 w-3">
+                                                        <g clip-path="url(#clip0_13624_2974)">
+                                                            <path
+                                                                d="M14.1033 2.56698C14.4701 1.82374 15.5299 1.82374 15.8967 2.56699L19.1757 9.21093C19.3214 9.50607 19.6029 9.71064 19.9287 9.75797L27.2607 10.8234C28.0809 10.9426 28.4084 11.9505 27.8149 12.5291L22.5094 17.7007C22.2737 17.9304 22.1662 18.2614 22.2218 18.5858L23.4743 25.8882C23.6144 26.7051 22.7569 27.3281 22.0233 26.9424L15.4653 23.4946C15.174 23.3415 14.826 23.3415 14.5347 23.4946L7.9767 26.9424C7.24307 27.3281 6.38563 26.7051 6.52574 25.8882L7.7782 18.5858C7.83384 18.2614 7.72629 17.9304 7.49061 17.7007L2.1851 12.5291C1.59159 11.9505 1.91909 10.9426 2.73931 10.8234L10.0713 9.75797C10.3971 9.71064 10.6786 9.50607 10.8243 9.21093L14.1033 2.56698Z"
+                                                                fill="#FBBF24" />
+                                                        </g>
+                                                        <defs>
+                                                            <clipPath id="clip0_13624_2974">
+                                                                <rect width="30" height="30" fill="white" />
+                                                            </clipPath>
+                                                        </defs>
+                                                    </svg>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="30"
+                                                        height="30" viewBox="0 0 30 30" fill="none"
+                                                        class="h-3 w-3">
+                                                        <g clip-path="url(#clip0_13624_2974)">
+                                                            <path
+                                                                d="M14.1033 2.56698C14.4701 1.82374 15.5299 1.82374 15.8967 2.56699L19.1757 9.21093C19.3214 9.50607 19.6029 9.71064 19.9287 9.75797L27.2607 10.8234C28.0809 10.9426 28.4084 11.9505 27.8149 12.5291L22.5094 17.7007C22.2737 17.9304 22.1662 18.2614 22.2218 18.5858L23.4743 25.8882C23.6144 26.7051 22.7569 27.3281 22.0233 26.9424L15.4653 23.4946C15.174 23.3415 14.826 23.3415 14.5347 23.4946L7.9767 26.9424C7.24307 27.3281 6.38563 26.7051 6.52574 25.8882L7.7782 18.5858C7.83384 18.2614 7.72629 17.9304 7.49061 17.7007L2.1851 12.5291C1.59159 11.9505 1.91909 10.9426 2.73931 10.8234L10.0713 9.75797C10.3971 9.71064 10.6786 9.50607 10.8243 9.21093L14.1033 2.56698Z"
+                                                                fill="#FBBF24" />
+                                                        </g>
+                                                        <defs>
+                                                            <clipPath id="clip0_13624_2974">
+                                                                <rect width="30" height="30" fill="white" />
+                                                            </clipPath>
+                                                        </defs>
+                                                    </svg>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="30"
+                                                        height="30" viewBox="0 0 30 30" fill="none"
+                                                        class="h-3 w-3">
+                                                        <g clip-path="url(#clip0_13624_2974)">
+                                                            <path
+                                                                d="M14.1033 2.56698C14.4701 1.82374 15.5299 1.82374 15.8967 2.56699L19.1757 9.21093C19.3214 9.50607 19.6029 9.71064 19.9287 9.75797L27.2607 10.8234C28.0809 10.9426 28.4084 11.9505 27.8149 12.5291L22.5094 17.7007C22.2737 17.9304 22.1662 18.2614 22.2218 18.5858L23.4743 25.8882C23.6144 26.7051 22.7569 27.3281 22.0233 26.9424L15.4653 23.4946C15.174 23.3415 14.826 23.3415 14.5347 23.4946L7.9767 26.9424C7.24307 27.3281 6.38563 26.7051 6.52574 25.8882L7.7782 18.5858C7.83384 18.2614 7.72629 17.9304 7.49061 17.7007L2.1851 12.5291C1.59159 11.9505 1.91909 10.9426 2.73931 10.8234L10.0713 9.75797C10.3971 9.71064 10.6786 9.50607 10.8243 9.21093L14.1033 2.56698Z"
+                                                                fill="#FBBF24" />
+                                                        </g>
+                                                        <defs>
+                                                            <clipPath id="clip0_13624_2974">
+                                                                <rect width="30" height="30" fill="white" />
+                                                            </clipPath>
+                                                        </defs>
+                                                    </svg>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="30"
+                                                        height="30" viewBox="0 0 30 30" fill="none"
+                                                        class="h-3 w-3">
+                                                        <g clip-path="url(#clip0_13624_2974)">
+                                                            <path
+                                                                d="M14.1033 2.56698C14.4701 1.82374 15.5299 1.82374 15.8967 2.56699L19.1757 9.21093C19.3214 9.50607 19.6029 9.71064 19.9287 9.75797L27.2607 10.8234C28.0809 10.9426 28.4084 11.9505 27.8149 12.5291L22.5094 17.7007C22.2737 17.9304 22.1662 18.2614 22.2218 18.5858L23.4743 25.8882C23.6144 26.7051 22.7569 27.3281 22.0233 26.9424L15.4653 23.4946C15.174 23.3415 14.826 23.3415 14.5347 23.4946L7.9767 26.9424C7.24307 27.3281 6.38563 26.7051 6.52574 25.8882L7.7782 18.5858C7.83384 18.2614 7.72629 17.9304 7.49061 17.7007L2.1851 12.5291C1.59159 11.9505 1.91909 10.9426 2.73931 10.8234L10.0713 9.75797C10.3971 9.71064 10.6786 9.50607 10.8243 9.21093L14.1033 2.56698Z"
+                                                                fill="#FBBF24" />
+                                                        </g>
+                                                        <defs>
+                                                            <clipPath id="clip0_13624_2974">
+                                                                <rect width="30" height="30" fill="white" />
+                                                            </clipPath>
+                                                        </defs>
+                                                    </svg>
+                                                </div>
+                                                <div class="flex items-center gap-3">
+                                                    <h6 class="font-semibold leading-8 text-black">@john.doe</h6>
+                                                    <p class="font-normal leading-7 text-gray-400">Nov 01, 2023</p>
+                                                </div>
+                                            </div>
+
+                                            <p class="font-normal text-sm text-gray-500 ">
+                                                I recently had the opportunity to explore Pagedone's UI design system,
+                                                and
+                                                it
+                                                left a lasting
+                                                impression on my workflow. The system seamlessly blends user-friendly
+                                                features
+                                                with a robust set
+                                                of design components, making it a go-to for creating visually stunning
+                                                and
+                                                consistent
+                                                interfaces.
+                                            </p>
+                                        </div>
+                                    @endfor
+
+                                </div>
+                                <div
+                                    class="flex flex-col sm:flex-row items-center justify-between pt-8  max-xl:max-w-3xl max-xl:mx-auto">
+                                    <p class="font-normal text-lg py-[1px] text-black">46 reviews</p>
+
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+
+                    {{-- rating & feedback --}}
+                </div>
+            </div>
+        </div>
+    </dialog>
+
+
+    <!-- Footer Section -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p>&copy; 2024 Skripsi - Ach. Fasihul Lisan</p>
+        </div>
+    </footer>
+
+    <!-- Swiper JS Initialization -->
+    <script>
+        var swiper = new Swiper(".mySwiper", {
+            slidesPerView: 1,
+            spaceBetween: 10,
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            breakpoints: {
+                640: {
+                    slidesPerView: 2,
+                    spaceBetween: 20,
+                },
+                768: {
+                    slidesPerView: 4,
+                    spaceBetween: 40,
+                },
+                1024: {
+                    slidesPerView: 5,
+                    spaceBetween: 50,
+                },
+            },
+        });
+
+        function initialize() {
+            var mapOptions = {
+                zoom: 15,
+                scrollwheel: false,
+                center: new google.maps.LatLng(-6.8832508995059065, 113.04777246625817),
+            };
+
+            var map = new google.maps.Map(document.getElementById('googleMap'),
+                mapOptions);
+
+
+            var marker = new google.maps.Marker({
+                position: map.getCenter(),
+                animation: google.maps.Animation.BOUNCE,
+                //icon: 'img/map-marker.png',
+                map: map
+            });
+        }
+    </script>
+
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key={{ config('services.google_maps.api_key') }}&callback=initialize">
+    </script>
 </div>
