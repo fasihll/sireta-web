@@ -34,8 +34,33 @@
                                 {{ $message }}
                             @enderror
                         </div>
+
+                        <input type="text" class="form-control @error('keterangan.' . $index) is-invalid @enderror"
+                            id="formGroupExampleInput" placeholder="Keterangan {{ $item->name }}"
+                            wire:model='keterangan.{{ $index }}'>
+                        <div class="invalid-feedback">
+                            @error('keterangan.' . $index)
+                                {{ $message }}
+                            @enderror
+                        </div>
                     </div>
                 @endforeach
+                <label for="alamatform">Alamat</label>
+                <input type="text" class="form-control @error('alamat') is-invalid @enderror" id="alamatform"
+                    placeholder="Alamat" wire:model='alamat'>
+                <div class="invalid-feedback">
+                    @error('alamat')
+                        {{ $message }}
+                    @enderror
+                </div>
+                <label for="latlngform">LatLng</label>
+                <input type="text" class="form-control @error('latlng') is-invalid @enderror" id="latlngform"
+                    placeholder="latlng" wire:model='latlng'>
+                <div class="invalid-feedback">
+                    @error('latlng')
+                        {{ $message }}
+                    @enderror
+                </div>
             @else
                 @foreach ($alternatif->alternatifKriteria as $index => $item)
                     <div class="form-group ">
@@ -49,8 +74,32 @@
                                 {{ $message }}
                             @enderror
                         </div>
+                        <input type="text" class="form-control @error('keterangan.' . $index) is-invalid @enderror"
+                            id="formGroupExampleInput" placeholder="Keterangan {{ $item->kriteria->name }} (Optional)"
+                            wire:model='keterangan.{{ $index }}'>
+                        <div class="invalid-feedback">
+                            @error('keterangan.' . $index)
+                                {{ $message }}
+                            @enderror
+                        </div>
                     </div>
                 @endforeach
+                <label for="alamatform">Alamat</label>
+                <input type="text" class="form-control @error('alamat') is-invalid @enderror" id="alamatform"
+                    placeholder="Alamat" wire:model='alamat'>
+                <div class="invalid-feedback">
+                    @error('alamat')
+                        {{ $message }}
+                    @enderror
+                </div>
+                <label for="latlngform">LatLng</label>
+                <input type="text" class="form-control @error('latlng') is-invalid @enderror" id="latlngform"
+                    placeholder="latlng" wire:model='latlng'>
+                <div class="invalid-feedback">
+                    @error('latlng')
+                        {{ $message }}
+                    @enderror
+                </div>
             @endif
         @endif
 

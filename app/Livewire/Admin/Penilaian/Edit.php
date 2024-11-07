@@ -17,10 +17,16 @@ class Edit extends Component
 
     public $alternatif_id;
     public $value = [];
+    public $keterangan = [];
+    public $alamat;
+    public $latlng;
 
     protected $rules = [
         'alternatif_id' => 'required',
         'value.*' => 'required|numeric', // Pastikan value adalah angka
+        'keterangan.*' => 'nullable', // Pastikan value adalah angka
+        'alamat' => 'nullable', // Pastikan value adalah angka
+        'latlng' => 'nullable', // Pastikan value adalah angka
     ];
 
     #[On('dataEdit')]
@@ -30,6 +36,9 @@ class Edit extends Component
         $this->alternatif = $data ?? null;
         $this->alternatif_id = $id ?? null;
         $this->value = $data->alternatifKriteria->pluck('value')->toArray() ?? null;
+        $this->keterangan = $data->alternatifKriteria->pluck('keterangan')->toArray() ?? null;
+        $this->alamat = $data->alternatifKriteria->pluck('alamat')->toArray()[0] ?? null;
+        $this->latlng = $data->alternatifKriteria->pluck('latlng')->toArray()[0] ?? null;
     }
 
     public function update()
@@ -47,7 +56,10 @@ class Edit extends Component
                         'kriteria_id' => $item->id
                     ],
                     [
-                        'value' => $this->value[$index]
+                        'value' => $this->value[$index],
+                        'keterangan' => $this->keterangan[$index],
+                        'alamat' => $this->alamat,
+                        'latlng' => $this->latlng
                     ]
                 );
             }

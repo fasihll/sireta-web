@@ -9,7 +9,7 @@ class AlternatifKriteria extends Model
 {
     use HasFactory;
     protected $table = 'alternatif_kriterias';
-    protected $fillable = ['wisata_id', 'kriteria_id', 'value'];
+    protected $fillable = ['wisata_id', 'kriteria_id', 'value', 'keterangan', 'alamat', 'latlng'];
 
     public function wisata()
     {

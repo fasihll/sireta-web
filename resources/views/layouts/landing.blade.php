@@ -97,7 +97,7 @@
                 <div class="text-2xl font-bold">SIRETA</div>
                 <div class="md:flex hidden items-center">
                     <a href="#rekomendasi" class="mr-[30px] font-bold">Rekomendasi</a>
-                    <a href="" class="mr-3 font-bold">Semua Wisata</a>
+                    <a href="#all_wisata" class="mr-3 font-bold">Semua Wisata</a>
                     @if (Route::has('login'))
                         @auth
                             <x-landing.navigation />

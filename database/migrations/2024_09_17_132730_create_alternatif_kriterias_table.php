@@ -16,6 +16,9 @@ return new class extends Migration
             $table->foreignId('wisata_id')->references('id')->on('wisatas')->onDelete('cascade');
             $table->foreignId('kriteria_id')->references('id')->on('kriterias')->onDelete('cascade');
             $table->double('value');
+            $table->string('keterangan')->nullable();
+            $table->string('alamat')->nullable();
+            $table->string('latlng')->nullable();
             $table->timestamps();
         });
     }
