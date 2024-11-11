@@ -239,26 +239,26 @@
                     </h3>
                     <table>
                         <tbody>
-                            <tr>
-                                <td class="mr-2">Biaya</td>
-                                <td>: 10.000</td>
-                            </tr>
-                            <tr>
-                                <td class="mr-2">Fasilitas</td>
-                                <td>: Lahan Parkir, Masjid, Toilet</td>
-                            </tr>
-                            <tr>
-                                <td class="mr-2">Keamanan</td>
-                                <td>: 5/5</td>
-                            </tr>
-                            <tr>
-                                <td class="mr-2">Kondisi Jalan</td>
-                                <td>: Bagus</td>
-                            </tr>
-                            <tr>
-                                <td class="mr-2">Kebersihan</td>
-                                <td>: Bagus</td>
-                            </tr>
+                            @isset($selected_wisata['alternatif_kriteria'])
+                                @foreach ($selected_wisata['alternatif_kriteria'] as $item)
+                                    @if ($item['kriteria']['name'] == 'Biaya')
+                                        <tr>
+                                            <td class="mr-2">{{ $item['kriteria']['name'] }}</td>
+                                            <td>: Rp. {{ $item['value'] }}</td>
+                                        </tr>
+                                    @elseif ($item['kriteria']['name'] == 'Fasilitas')
+                                        <tr>
+                                            <td class="mr-2">{{ $item['kriteria']['name'] }}</td>
+                                            <td>: {{ $item['value'] }} {{ $item['keterangan'] ?? '' }}</td>
+                                        </tr>
+                                    @else
+                                        <tr>
+                                            <td class="mr-2">{{ $item['kriteria']['name'] }}</td>
+                                            <td>: {{ $item['value'] }}/5 {{ $item['keterangan'] ?? '' }}</td>
+                                        </tr>
+                                    @endif
+                                @endforeach
+                            @endisset
                         </tbody>
                     </table>
                     <p class="py-4">{{ $selected_wisata['description'] ?? 'null' }}</p>
