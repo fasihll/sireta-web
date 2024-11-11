@@ -1,3 +1,7 @@
+@push('assets')
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+@endpush
 <div>
     <!-- Hero Section -->
     <section class="h-screen bg-cover bg-center relative" style="background-color: rgba(0, 147, 233, 100%)">
@@ -36,7 +40,7 @@
 
 
     <!-- Card Slider Section -->
-    <section id="rekomendasi" class="py-20 bg-white overflow-hidden">
+    <section id="rekomendasi" class="py-20 bg-white overflow-hidden" wire:ignore>
         <div class="text-center mb-12">
             <h2 class="text-3xl font-bold">Rekomendasi</h2>
         </div>
@@ -44,14 +48,16 @@
             <div class="swiper-wrapper md:mx-[100px]" data-aos="fade-left" data-aos-anchor="#example-anchor"
                 data-aos-offset="500" data-aos-duration="500">
                 <!-- Slide 1 -->
-                @for ($i = 0; $i < 10; $i++)
+                {{-- {{ dd($rekomendasi) }} --}}
+                @foreach ($rekomendasi as $key => $r)
                     <div class="swiper-slide max-w-lg my-8 transition-transform duration-300 hover:scale-[105%]"
-                        onclick="my_modal_3.showModal()">
+                        onclick="my_modal_3.showModal()" wire:key='item-{{ $key }}'
+                        wire:click="setSelectedData({{ $key }})">
                         <div class="relative bg-white shadow-xl rounded-lg overflow-hidden">
                             <!-- Persegi dengan nomor di pojok kiri atas -->
                             <div
                                 class="absolute top-0 left-0 bg-yellow-500 text-white text-sm font-bold py-3 px-3 rounded-br-lg z-10">
-                                {{ $i + 1 }}
+                                {{ $loop->iteration }}
                             </div>
                             <!-- Gambar -->
                             <div class="relative h-80">
@@ -61,80 +67,30 @@
                                 <div
                                     class="absolute inset-0 flex items-end justify-start p-4 bg-gradient-to-t from-black to-transparent">
                                     <div>
-                                        <h3 class="text-lg font-semibold text-white">Wisata ...</h3>
+                                        <h3 class="text-lg font-semibold text-white">{{ $r->name }}</h3>
                                         <div class="flex items-center gap-1">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
-                                                viewBox="0 0 30 30" fill="none" class="h-3 w-3">
-                                                <g clip-path="url(#clip0_13624_2974)">
-                                                    <path
-                                                        d="M14.1033 2.56698C14.4701 1.82374 15.5299 1.82374 15.8967 2.56699L19.1757 9.21093C19.3214 9.50607 19.6029 9.71064 19.9287 9.75797L27.2607 10.8234C28.0809 10.9426 28.4084 11.9505 27.8149 12.5291L22.5094 17.7007C22.2737 17.9304 22.1662 18.2614 22.2218 18.5858L23.4743 25.8882C23.6144 26.7051 22.7569 27.3281 22.0233 26.9424L15.4653 23.4946C15.174 23.3415 14.826 23.3415 14.5347 23.4946L7.9767 26.9424C7.24307 27.3281 6.38563 26.7051 6.52574 25.8882L7.7782 18.5858C7.83384 18.2614 7.72629 17.9304 7.49061 17.7007L2.1851 12.5291C1.59159 11.9505 1.91909 10.9426 2.73931 10.8234L10.0713 9.75797C10.3971 9.71064 10.6786 9.50607 10.8243 9.21093L14.1033 2.56698Z"
-                                                        fill="#FBBF24" />
-                                                </g>
-                                                <defs>
-                                                    <clipPath id="clip0_13624_2974">
-                                                        <rect width="30" height="30" fill="white" />
-                                                    </clipPath>
-                                                </defs>
-                                            </svg>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
-                                                viewBox="0 0 30 30" fill="none" class="h-3 w-3">
-                                                <g clip-path="url(#clip0_13624_2974)">
-                                                    <path
-                                                        d="M14.1033 2.56698C14.4701 1.82374 15.5299 1.82374 15.8967 2.56699L19.1757 9.21093C19.3214 9.50607 19.6029 9.71064 19.9287 9.75797L27.2607 10.8234C28.0809 10.9426 28.4084 11.9505 27.8149 12.5291L22.5094 17.7007C22.2737 17.9304 22.1662 18.2614 22.2218 18.5858L23.4743 25.8882C23.6144 26.7051 22.7569 27.3281 22.0233 26.9424L15.4653 23.4946C15.174 23.3415 14.826 23.3415 14.5347 23.4946L7.9767 26.9424C7.24307 27.3281 6.38563 26.7051 6.52574 25.8882L7.7782 18.5858C7.83384 18.2614 7.72629 17.9304 7.49061 17.7007L2.1851 12.5291C1.59159 11.9505 1.91909 10.9426 2.73931 10.8234L10.0713 9.75797C10.3971 9.71064 10.6786 9.50607 10.8243 9.21093L14.1033 2.56698Z"
-                                                        fill="#FBBF24" />
-                                                </g>
-                                                <defs>
-                                                    <clipPath id="clip0_13624_2974">
-                                                        <rect width="30" height="30" fill="white" />
-                                                    </clipPath>
-                                                </defs>
-                                            </svg>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
-                                                viewBox="0 0 30 30" fill="none" class="h-3 w-3">
-                                                <g clip-path="url(#clip0_13624_2974)">
-                                                    <path
-                                                        d="M14.1033 2.56698C14.4701 1.82374 15.5299 1.82374 15.8967 2.56699L19.1757 9.21093C19.3214 9.50607 19.6029 9.71064 19.9287 9.75797L27.2607 10.8234C28.0809 10.9426 28.4084 11.9505 27.8149 12.5291L22.5094 17.7007C22.2737 17.9304 22.1662 18.2614 22.2218 18.5858L23.4743 25.8882C23.6144 26.7051 22.7569 27.3281 22.0233 26.9424L15.4653 23.4946C15.174 23.3415 14.826 23.3415 14.5347 23.4946L7.9767 26.9424C7.24307 27.3281 6.38563 26.7051 6.52574 25.8882L7.7782 18.5858C7.83384 18.2614 7.72629 17.9304 7.49061 17.7007L2.1851 12.5291C1.59159 11.9505 1.91909 10.9426 2.73931 10.8234L10.0713 9.75797C10.3971 9.71064 10.6786 9.50607 10.8243 9.21093L14.1033 2.56698Z"
-                                                        fill="#FBBF24" />
-                                                </g>
-                                                <defs>
-                                                    <clipPath id="clip0_13624_2974">
-                                                        <rect width="30" height="30" fill="white" />
-                                                    </clipPath>
-                                                </defs>
-                                            </svg>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
-                                                viewBox="0 0 30 30" fill="none" class="h-3 w-3">
-                                                <g clip-path="url(#clip0_13624_2974)">
-                                                    <path
-                                                        d="M14.1033 2.56698C14.4701 1.82374 15.5299 1.82374 15.8967 2.56699L19.1757 9.21093C19.3214 9.50607 19.6029 9.71064 19.9287 9.75797L27.2607 10.8234C28.0809 10.9426 28.4084 11.9505 27.8149 12.5291L22.5094 17.7007C22.2737 17.9304 22.1662 18.2614 22.2218 18.5858L23.4743 25.8882C23.6144 26.7051 22.7569 27.3281 22.0233 26.9424L15.4653 23.4946C15.174 23.3415 14.826 23.3415 14.5347 23.4946L7.9767 26.9424C7.24307 27.3281 6.38563 26.7051 6.52574 25.8882L7.7782 18.5858C7.83384 18.2614 7.72629 17.9304 7.49061 17.7007L2.1851 12.5291C1.59159 11.9505 1.91909 10.9426 2.73931 10.8234L10.0713 9.75797C10.3971 9.71064 10.6786 9.50607 10.8243 9.21093L14.1033 2.56698Z"
-                                                        fill="#FBBF24" />
-                                                </g>
-                                                <defs>
-                                                    <clipPath id="clip0_13624_2974">
-                                                        <rect width="30" height="30" fill="white" />
-                                                    </clipPath>
-                                                </defs>
-                                            </svg>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
-                                                viewBox="0 0 30 30" fill="none" class="h-3 w-3">
-                                                <g clip-path="url(#clip0_13624_2974)">
-                                                    <path
-                                                        d="M14.1033 2.56698C14.4701 1.82374 15.5299 1.82374 15.8967 2.56699L19.1757 9.21093C19.3214 9.50607 19.6029 9.71064 19.9287 9.75797L27.2607 10.8234C28.0809 10.9426 28.4084 11.9505 27.8149 12.5291L22.5094 17.7007C22.2737 17.9304 22.1662 18.2614 22.2218 18.5858L23.4743 25.8882C23.6144 26.7051 22.7569 27.3281 22.0233 26.9424L15.4653 23.4946C15.174 23.3415 14.826 23.3415 14.5347 23.4946L7.9767 26.9424C7.24307 27.3281 6.38563 26.7051 6.52574 25.8882L7.7782 18.5858C7.83384 18.2614 7.72629 17.9304 7.49061 17.7007L2.1851 12.5291C1.59159 11.9505 1.91909 10.9426 2.73931 10.8234L10.0713 9.75797C10.3971 9.71064 10.6786 9.50607 10.8243 9.21093L14.1033 2.56698Z"
-                                                        fill="#FBBF24" />
-                                                </g>
-                                                <defs>
-                                                    <clipPath id="clip0_13624_2974">
-                                                        <rect width="30" height="30" fill="white" />
-                                                    </clipPath>
-                                                </defs>
-                                            </svg>
+                                            @for ($i = 0; $i < 5; $i++)
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
+                                                    viewBox="0 0 30 30" fill="none" class="h-3 w-3">
+                                                    <g clip-path="url(#clip0_13624_2974)">
+                                                        <path
+                                                            d="M14.1033 2.56698C14.4701 1.82374 15.5299 1.82374 15.8967 2.56699L19.1757 9.21093C19.3214 9.50607 19.6029 9.71064 19.9287 9.75797L27.2607 10.8234C28.0809 10.9426 28.4084 11.9505 27.8149 12.5291L22.5094 17.7007C22.2737 17.9304 22.1662 18.2614 22.2218 18.5858L23.4743 25.8882C23.6144 26.7051 22.7569 27.3281 22.0233 26.9424L15.4653 23.4946C15.174 23.3415 14.826 23.3415 14.5347 23.4946L7.9767 26.9424C7.24307 27.3281 6.38563 26.7051 6.52574 25.8882L7.7782 18.5858C7.83384 18.2614 7.72629 17.9304 7.49061 17.7007L2.1851 12.5291C1.59159 11.9505 1.91909 10.9426 2.73931 10.8234L10.0713 9.75797C10.3971 9.71064 10.6786 9.50607 10.8243 9.21093L14.1033 2.56698Z"
+                                                            fill="#FBBF24" />
+                                                    </g>
+                                                    <defs>
+                                                        <clipPath id="clip0_13624_2974">
+                                                            <rect width="30" height="30" fill="white" />
+                                                        </clipPath>
+                                                    </defs>
+                                                </svg>
+                                            @endfor
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                @endfor
+                @endforeach
 
             </div>
             <!-- Navigation buttons -->
@@ -249,7 +205,8 @@
         </div>
     </section>
 
-    <dialog id="my_modal_3" class="modal">
+
+    <dialog id="my_modal_3" class="modal" wire:ignore.self>
         <div class="modal-box w-11/12 max-w-5xl p-0 h-[90vh]">
             <form method="dialog">
                 <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
@@ -272,9 +229,14 @@
                                     fill="black" />
                             </g>
                         </svg>
-                        <span class="font-medium">Temanah, Tlangoh, Kec. Tj. Bumi,</span>
+                        <span
+                            class="font-medium">{{ $selected_wisata['alternatif_kriteria'][0]['alamat'] ?? 'null' }}</span>
                     </p>
-                    <h3 class="text-4xl font-medium my-3">Pantai Telangoh</h3>
+                    <h3 class="text-4xl font-medium my-3">
+
+                        {{ $selected_wisata['name'] ?? 'null' }}
+
+                    </h3>
                     <table>
                         <tbody>
                             <tr>
@@ -299,15 +261,9 @@
                             </tr>
                         </tbody>
                     </table>
-                    <p class="py-4">Pantai Tlangoh, salah satu destinasi wisata populer di Bangkalan, Madura,
-                        menawarkan panorama alam yang menakjubkan dengan hamparan pasir putih, air laut biru, dan angin
-                        sepoi-sepoi yang menyegarkan. Wisatawan dapat menikmati berbagai aktivitas seperti bermain
-                        pasir, berenang, berfoto di spot menarik seperti ayunan, jembatan kayu, dan gazebo, atau sekadar
-                        bersantai di tepi pantai. Terletak sekitar 40 km dari kota Bangkalan, pantai ini dapat dijangkau
-                        dengan kendaraan pribadi atau umum dan buka setiap hari selama 24 jam, dengan tiket masuk yang
-                        terjangkau sebesar 3.500 rupiah per orang.</p>
+                    <p class="py-4">{{ $selected_wisata['description'] ?? 'null' }}</p>
 
-                    <div id="googleMap" class="rounded-lg"></div>
+                    <div id="map" class="rounded-lg" wire:ignore></div>
 
                     {{-- rating & feedback --}}
 
@@ -402,7 +358,8 @@
                                                             </defs>
                                                         </svg>
                                                     </div>
-                                                    <p class="font-normal text-lg leading-8 text-gray-400">46 Ratings
+                                                    <p class="font-normal text-lg leading-8 text-gray-400">46
+                                                        Ratings
                                                     </p>
                                                 </div>
 
@@ -616,7 +573,8 @@
                                                     </div>
                                                     <div class="flex items-center gap-3">
                                                         <h6 class="font-semibold leading-8 text-black">@Anda</h6>
-                                                        <p class="font-normal leading-7 text-gray-400">Nov 01, 2023</p>
+                                                        <p class="font-normal leading-7 text-gray-400">Nov 01, 2023
+                                                        </p>
                                                     </div>
                                                 </div>
 
@@ -758,14 +716,17 @@
                                             </div>
 
                                             <p class="font-normal text-sm text-gray-500 ">
-                                                I recently had the opportunity to explore Pagedone's UI design system,
+                                                I recently had the opportunity to explore Pagedone's UI design
+                                                system,
                                                 and
                                                 it
                                                 left a lasting
-                                                impression on my workflow. The system seamlessly blends user-friendly
+                                                impression on my workflow. The system seamlessly blends
+                                                user-friendly
                                                 features
                                                 with a robust set
-                                                of design components, making it a go-to for creating visually stunning
+                                                of design components, making it a go-to for creating visually
+                                                stunning
                                                 and
                                                 consistent
                                                 interfaces.
@@ -791,62 +752,109 @@
     </dialog>
 
 
+
     <!-- Footer Section -->
     <footer class="bg-gray-800 text-white py-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <p>&copy; 2024 Skripsi - Ach. Fasihul Lisan</p>
         </div>
     </footer>
-
     <!-- Swiper JS Initialization -->
-    <script>
-        var swiper = new Swiper(".mySwiper", {
-            slidesPerView: 1,
-            spaceBetween: 10,
-            pagination: {
-                el: ".swiper-pagination",
-                clickable: true,
-            },
-            breakpoints: {
-                640: {
-                    slidesPerView: 2,
-                    spaceBetween: 20,
+
+    @persist('scripts')
+        <script>
+            var swiper = new Swiper(".mySwiper", {
+                slidesPerView: 1,
+                spaceBetween: 10,
+                pagination: {
+                    el: ".swiper-pagination",
+                    clickable: true,
                 },
-                768: {
-                    slidesPerView: 4,
-                    spaceBetween: 40,
+                breakpoints: {
+                    640: {
+                        slidesPerView: 2,
+                        spaceBetween: 20,
+                    },
+                    768: {
+                        slidesPerView: 4,
+                        spaceBetween: 40,
+                    },
+                    1024: {
+                        slidesPerView: 5,
+                        spaceBetween: 50,
+                    },
                 },
-                1024: {
-                    slidesPerView: 5,
-                    spaceBetween: 50,
-                },
-            },
-        });
-
-        function initialize() {
-            var mapOptions = {
-                zoom: 15,
-                scrollwheel: false,
-                center: new google.maps.LatLng(
-                    {{ floatval(explode(',', '-6.8832508995059065, 113.04777246625817')[0]) }},
-                    {{ floatval(explode(',', '-6.8832508995059065, 113.04777246625817')[1]) }}
-                ),
-            };
-
-            var map = new google.maps.Map(document.getElementById('googleMap'),
-                mapOptions);
-
-
-            var marker = new google.maps.Marker({
-                position: map.getCenter(),
-                animation: google.maps.Animation.BOUNCE,
-                //icon: 'img/map-marker.png',
-                map: map
             });
-        }
-    </script>
+            // Set initial coordinates from PHP variables
+            var initialLatitude = -1231;
+            var initialLongitude = 1231;
+            var map, marker;
+            // Initialize the map
+            function initializeMap() {
+                // Create the map centered at the initial coordinates
+                map = L.map('map').setView([initialLatitude, initialLongitude], 15);
 
-    <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key={{ config('services.google_maps.api_key') }}&callback=initialize">
-    </script>
+                // Add the OpenStreetMap tiles
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    maxZoom: 19,
+                    attribution: '© OpenStreetMap'
+                }).addTo(map);
+
+                // Add a marker at the initial position
+                marker = L.marker([initialLatitude, initialLongitude]).addTo(map)
+                    .bindPopup(`
+                <b>Hello world!</b><br />
+                I am a popup.<br />
+                <a href="https://www.google.com/maps?q=${initialLatitude},${initialLongitude}" target="_blank">
+                    Open in Google Maps
+                </a>
+            `).openPopup();
+
+            }
+
+            // Function to update the map with new coordinates
+            function updateMap(latitude, longitude, name, alamat) {
+                // Update marker and map center
+                var newLatLng = new L.LatLng(latitude, longitude);
+                marker.setLatLng(newLatLng);
+                map.setView(newLatLng, 15);
+                // Check if latitude and longitude are valid for Google Maps
+                var googleMapsUrl = (latitude !== 0 && longitude !== 0) ?
+                    `https://www.google.com/maps?q=${latitude},${longitude}` :
+                    '#rekomendasi'; // Set to '#' or some default value if lat/long are 0
+
+                // Bind the popup with name, address, and the Google Maps link
+                marker.bindPopup(`
+                    <b>${name}</b><br />
+                    ${alamat}
+                    <br />
+                    <a href="${googleMapsUrl}">
+                        Open in Google Maps
+                    </a>
+                `).openPopup();
+            }
+
+            // Initialize the map on page load
+            document.addEventListener('DOMContentLoaded', function() {
+                initializeMap();
+            });
+
+            // Listen for the Livewire event to update the coordinates dynamically
+            document.addEventListener('livewire:init', function() {
+                Livewire.on('updateMaps', ({
+                    lat,
+                    lng,
+                    name,
+                    alamat
+                }) => {
+                    var latitude = parseFloat(lat);
+                    var longitude = parseFloat(lng);
+                    updateMap(latitude, longitude, name, alamat);
+                });
+            });
+        </script>
+
+        <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+            integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    @endpersist
 </div>

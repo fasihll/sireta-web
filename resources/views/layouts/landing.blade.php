@@ -73,15 +73,15 @@
             scrollbar-width: thin;
         }
 
-        #googleMap {
+        #map {
             height: 400px;
             width: 100%;
         }
     </style>
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
     <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.13/dist/full.min.css" rel="stylesheet" type="text/css" />
     @stack('assets')
     @livewireStyles
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
 {{-- layout landing page --}}
@@ -146,10 +146,12 @@
     </div>
 
     <!-- BEGIN GLOBAL MANDATORY SCRIPTS -->
+
     <script src="{{ asset('assets/js/libs/jquery-3.1.1.min.js') }}"></script>
     <script src="{{ asset('bootstrap/js/popper.min.js') }}"></script>
     <script src="{{ asset('bootstrap/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('plugins/perfect-scrollbar/perfect-scrollbar.min.js') }}"></script>
+
 
 
     <script>

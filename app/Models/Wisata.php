@@ -22,4 +22,8 @@ class Wisata extends Model
     {
         return $this->hasMany(AlternatifKriteria::class, 'wisata_id', 'id');
     }
+    public function feedbacks()
+    {
+        return $this->hasMany(Feedback::class, 'wisata_id', 'id');
+    }
 }

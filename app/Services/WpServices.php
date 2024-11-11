@@ -124,7 +124,7 @@ class WpServices
     $sortedWisataIds = array_keys($vektorV);
 
     // Query untuk ambil data wisata sesuai urutan
-    $query = Wisata::with('category') // Pastikan relasi 'category' ada di model Wisata
+    $query = Wisata::with(['category', 'alternatifKriteria.kriteria', 'feedbacks']) // Pastikan relasi 'category' ada di model Wisata
       ->whereIn('id', $sortedWisataIds);
 
     // Jika categoryId disediakan, tambahkan kondisi untuk filter kategori
