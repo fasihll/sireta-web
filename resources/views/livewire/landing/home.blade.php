@@ -50,7 +50,7 @@
                 <!-- Slide 1 -->
                 {{-- {{ dd($rekomendasi) }} --}}
                 @foreach ($rekomendasi as $key => $r)
-                    <div class="swiper-slide max-w-lg my-8 transition-transform duration-300 hover:scale-[105%]"
+                    <div class="swiper-slide max-w-lg my-8 transition-transform duration-300 hover:scale-[105%] mx-3"
                         onclick="my_modal_3.showModal()" wire:key='item-{{ $key }}'
                         wire:click="setSelectedData({{ $key }})">
                         <div class="relative bg-white shadow-xl rounded-lg overflow-hidden">
@@ -99,17 +99,28 @@
     </section>
 
     <!-- Card Slider Section -->
-    <section id="all_wisata" class="py-20 bg-white">
+    <section id="all_wisata" class=" bg-white" x-data>
         <div class="text-center mb-12">
             <h2 class="text-3xl font-bold">Semua Wisata</h2>
         </div>
-        <div class="">
-            <div class="grid grid-cols-5 gap-5 md:mx-[100px]" data-aos="fade-left" data-aos-anchor="#example-anchor"
-                data-aos-offset="500" data-aos-duration="500">
+        <div class="text-center">
+            <ul class="inline-flex gap-4">
+                @foreach ($category as $c)
+                    <li class=" hover:z-50 hover:border-b-slate-600 hover:border-b-2 hover:border-solid cursor-pointer"
+                        wire:key='{{ $c->id }}' wire:click='updateCategorySelected({{ $c->id }})'>
+                        {{ $c->name }}
+                    </li>
+                @endforeach
+            </ul>
+        </div>
+        <div class="md:mx-[100px]">
+            <div class="grid grid-cols-1 gap-2 mx-3 md:grid-cols-5 md:gap-5" data-aos="fade-left"
+                data-aos-anchor="#example-anchor" data-aos-offset="500" data-aos-duration="500" wire:ignore.self>
                 <!-- Slide 1 -->
-                @for ($i = 0; $i < 10; $i++)
+                @foreach ($alldata as $key => $item)
                     <div class="max-w-lg my-8 transition-transform duration-300 hover:scale-[105%]"
-                        onclick="my_modal_3.showModal()">
+                        onclick="my_modal_3.showModal()" wire:key='item-{{ $key }}'
+                        wire:click="setSelectedDataAll({{ $item->id }})">
                         <div class="relative bg-white shadow-xl rounded-lg overflow-hidden">
                             <!-- Persegi dengan nomor di pojok kiri atas -->
                             {{-- <div
@@ -124,82 +135,38 @@
                                 <div
                                     class="absolute inset-0 flex items-end justify-start p-4 bg-gradient-to-t from-black to-transparent">
                                     <div>
-                                        <h3 class="text-lg font-semibold text-white">Wisata ...</h3>
+                                        <h3 class="text-lg font-semibold text-white">{{ $item['name'] }}</h3>
                                         <div class="flex items-center gap-1">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
-                                                viewBox="0 0 30 30" fill="none" class="h-3 w-3">
-                                                <g clip-path="url(#clip0_13624_2974)">
-                                                    <path
-                                                        d="M14.1033 2.56698C14.4701 1.82374 15.5299 1.82374 15.8967 2.56699L19.1757 9.21093C19.3214 9.50607 19.6029 9.71064 19.9287 9.75797L27.2607 10.8234C28.0809 10.9426 28.4084 11.9505 27.8149 12.5291L22.5094 17.7007C22.2737 17.9304 22.1662 18.2614 22.2218 18.5858L23.4743 25.8882C23.6144 26.7051 22.7569 27.3281 22.0233 26.9424L15.4653 23.4946C15.174 23.3415 14.826 23.3415 14.5347 23.4946L7.9767 26.9424C7.24307 27.3281 6.38563 26.7051 6.52574 25.8882L7.7782 18.5858C7.83384 18.2614 7.72629 17.9304 7.49061 17.7007L2.1851 12.5291C1.59159 11.9505 1.91909 10.9426 2.73931 10.8234L10.0713 9.75797C10.3971 9.71064 10.6786 9.50607 10.8243 9.21093L14.1033 2.56698Z"
-                                                        fill="#FBBF24" />
-                                                </g>
-                                                <defs>
-                                                    <clipPath id="clip0_13624_2974">
-                                                        <rect width="30" height="30" fill="white" />
-                                                    </clipPath>
-                                                </defs>
-                                            </svg>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
-                                                viewBox="0 0 30 30" fill="none" class="h-3 w-3">
-                                                <g clip-path="url(#clip0_13624_2974)">
-                                                    <path
-                                                        d="M14.1033 2.56698C14.4701 1.82374 15.5299 1.82374 15.8967 2.56699L19.1757 9.21093C19.3214 9.50607 19.6029 9.71064 19.9287 9.75797L27.2607 10.8234C28.0809 10.9426 28.4084 11.9505 27.8149 12.5291L22.5094 17.7007C22.2737 17.9304 22.1662 18.2614 22.2218 18.5858L23.4743 25.8882C23.6144 26.7051 22.7569 27.3281 22.0233 26.9424L15.4653 23.4946C15.174 23.3415 14.826 23.3415 14.5347 23.4946L7.9767 26.9424C7.24307 27.3281 6.38563 26.7051 6.52574 25.8882L7.7782 18.5858C7.83384 18.2614 7.72629 17.9304 7.49061 17.7007L2.1851 12.5291C1.59159 11.9505 1.91909 10.9426 2.73931 10.8234L10.0713 9.75797C10.3971 9.71064 10.6786 9.50607 10.8243 9.21093L14.1033 2.56698Z"
-                                                        fill="#FBBF24" />
-                                                </g>
-                                                <defs>
-                                                    <clipPath id="clip0_13624_2974">
-                                                        <rect width="30" height="30" fill="white" />
-                                                    </clipPath>
-                                                </defs>
-                                            </svg>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
-                                                viewBox="0 0 30 30" fill="none" class="h-3 w-3">
-                                                <g clip-path="url(#clip0_13624_2974)">
-                                                    <path
-                                                        d="M14.1033 2.56698C14.4701 1.82374 15.5299 1.82374 15.8967 2.56699L19.1757 9.21093C19.3214 9.50607 19.6029 9.71064 19.9287 9.75797L27.2607 10.8234C28.0809 10.9426 28.4084 11.9505 27.8149 12.5291L22.5094 17.7007C22.2737 17.9304 22.1662 18.2614 22.2218 18.5858L23.4743 25.8882C23.6144 26.7051 22.7569 27.3281 22.0233 26.9424L15.4653 23.4946C15.174 23.3415 14.826 23.3415 14.5347 23.4946L7.9767 26.9424C7.24307 27.3281 6.38563 26.7051 6.52574 25.8882L7.7782 18.5858C7.83384 18.2614 7.72629 17.9304 7.49061 17.7007L2.1851 12.5291C1.59159 11.9505 1.91909 10.9426 2.73931 10.8234L10.0713 9.75797C10.3971 9.71064 10.6786 9.50607 10.8243 9.21093L14.1033 2.56698Z"
-                                                        fill="#FBBF24" />
-                                                </g>
-                                                <defs>
-                                                    <clipPath id="clip0_13624_2974">
-                                                        <rect width="30" height="30" fill="white" />
-                                                    </clipPath>
-                                                </defs>
-                                            </svg>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
-                                                viewBox="0 0 30 30" fill="none" class="h-3 w-3">
-                                                <g clip-path="url(#clip0_13624_2974)">
-                                                    <path
-                                                        d="M14.1033 2.56698C14.4701 1.82374 15.5299 1.82374 15.8967 2.56699L19.1757 9.21093C19.3214 9.50607 19.6029 9.71064 19.9287 9.75797L27.2607 10.8234C28.0809 10.9426 28.4084 11.9505 27.8149 12.5291L22.5094 17.7007C22.2737 17.9304 22.1662 18.2614 22.2218 18.5858L23.4743 25.8882C23.6144 26.7051 22.7569 27.3281 22.0233 26.9424L15.4653 23.4946C15.174 23.3415 14.826 23.3415 14.5347 23.4946L7.9767 26.9424C7.24307 27.3281 6.38563 26.7051 6.52574 25.8882L7.7782 18.5858C7.83384 18.2614 7.72629 17.9304 7.49061 17.7007L2.1851 12.5291C1.59159 11.9505 1.91909 10.9426 2.73931 10.8234L10.0713 9.75797C10.3971 9.71064 10.6786 9.50607 10.8243 9.21093L14.1033 2.56698Z"
-                                                        fill="#FBBF24" />
-                                                </g>
-                                                <defs>
-                                                    <clipPath id="clip0_13624_2974">
-                                                        <rect width="30" height="30" fill="white" />
-                                                    </clipPath>
-                                                </defs>
-                                            </svg>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
-                                                viewBox="0 0 30 30" fill="none" class="h-3 w-3">
-                                                <g clip-path="url(#clip0_13624_2974)">
-                                                    <path
-                                                        d="M14.1033 2.56698C14.4701 1.82374 15.5299 1.82374 15.8967 2.56699L19.1757 9.21093C19.3214 9.50607 19.6029 9.71064 19.9287 9.75797L27.2607 10.8234C28.0809 10.9426 28.4084 11.9505 27.8149 12.5291L22.5094 17.7007C22.2737 17.9304 22.1662 18.2614 22.2218 18.5858L23.4743 25.8882C23.6144 26.7051 22.7569 27.3281 22.0233 26.9424L15.4653 23.4946C15.174 23.3415 14.826 23.3415 14.5347 23.4946L7.9767 26.9424C7.24307 27.3281 6.38563 26.7051 6.52574 25.8882L7.7782 18.5858C7.83384 18.2614 7.72629 17.9304 7.49061 17.7007L2.1851 12.5291C1.59159 11.9505 1.91909 10.9426 2.73931 10.8234L10.0713 9.75797C10.3971 9.71064 10.6786 9.50607 10.8243 9.21093L14.1033 2.56698Z"
-                                                        fill="#FBBF24" />
-                                                </g>
-                                                <defs>
-                                                    <clipPath id="clip0_13624_2974">
-                                                        <rect width="30" height="30" fill="white" />
-                                                    </clipPath>
-                                                </defs>
-                                            </svg>
+                                            @for ($i = 0; $i < 5; $i++)
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
+                                                    viewBox="0 0 30 30" fill="none" class="h-3 w-3">
+                                                    <g clip-path="url(#clip0_13624_2974)">
+                                                        <path
+                                                            d="M14.1033 2.56698C14.4701 1.82374 15.5299 1.82374 15.8967 2.56699L19.1757 9.21093C19.3214 9.50607 19.6029 9.71064 19.9287 9.75797L27.2607 10.8234C28.0809 10.9426 28.4084 11.9505 27.8149 12.5291L22.5094 17.7007C22.2737 17.9304 22.1662 18.2614 22.2218 18.5858L23.4743 25.8882C23.6144 26.7051 22.7569 27.3281 22.0233 26.9424L15.4653 23.4946C15.174 23.3415 14.826 23.3415 14.5347 23.4946L7.9767 26.9424C7.24307 27.3281 6.38563 26.7051 6.52574 25.8882L7.7782 18.5858C7.83384 18.2614 7.72629 17.9304 7.49061 17.7007L2.1851 12.5291C1.59159 11.9505 1.91909 10.9426 2.73931 10.8234L10.0713 9.75797C10.3971 9.71064 10.6786 9.50607 10.8243 9.21093L14.1033 2.56698Z"
+                                                            fill="#FBBF24" />
+                                                    </g>
+                                                    <defs>
+                                                        <clipPath id="clip0_13624_2974">
+                                                            <rect width="30" height="30" fill="white" />
+                                                        </clipPath>
+                                                    </defs>
+                                                </svg>
+                                            @endfor
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                @endfor
+                @endforeach
 
             </div>
+
+            <div>
+                Total Data : {{ $alldata->total() }}
+            </div>
+
+            {{ $alldata->links() }}
             <!-- Navigation buttons -->
             <div class="swiper-pagination mt-5"></div>
         </div>

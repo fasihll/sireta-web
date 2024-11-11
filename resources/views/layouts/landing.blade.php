@@ -86,10 +86,10 @@
 
 {{-- layout landing page --}}
 
-<body class="font-sans antialiased">
+<body class="font-sans antialiased bg-white">
 
 
-    <div class="min-h-screen bg-gray-100">
+    <div class="min-h-screen bg-white">
 
         <!-- Navbar -->
         <nav class="absolute top-0 left-0 w-full bg-transparent text-white z-10">
