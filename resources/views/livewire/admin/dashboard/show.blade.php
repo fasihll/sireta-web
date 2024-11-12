@@ -34,9 +34,9 @@
                         <p class="w-title">Total Kriteria</p>
                         <p class="w-stats">{{ $kriteria->count() }}</p>
                     </div>
-                    <div class="w-chart-render-one">
+                    {{-- <div class="w-chart-render-one">
                         <div id="total-users"></div>
-                    </div>
+                    </div> --}}
                 </div>
 
 
@@ -45,9 +45,9 @@
                         <p class="w-title">Total Wisata</p>
                         <p class="w-stats">{{ $wisata->count() }}</p>
                     </div>
-                    <div class="w-chart-render-one">
+                    {{-- <div class="w-chart-render-one">
                         <div id="paid-visits"></div>
-                    </div>
+                    </div> --}}
                 </div>
 
             </div>
