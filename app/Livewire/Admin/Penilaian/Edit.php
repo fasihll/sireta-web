@@ -56,8 +56,8 @@ class Edit extends Component
                         'kriteria_id' => $item->id
                     ],
                     [
-                        'value' => $this->value[$index],
-                        'keterangan' => $this->keterangan[$index],
+                        'value' => $this->value[$index] ?? 0,
+                        'keterangan' => $this->keterangan[$index] ?? "",
                         'alamat' => $this->alamat,
                         'latlng' => $this->latlng
                     ]

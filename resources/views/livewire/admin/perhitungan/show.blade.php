@@ -1,4 +1,20 @@
 <div class="row layout-spacing mt-2">
+    @if ($haveNull)
+        <div class="col-12">
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <strong>Informasi:</strong> Data Penilaian Belum Lengkap
+            </div>
+        </div>
+    @endif
+
+    @if (($wp == null) | !isset($wp['sorted_wisata']))
+        <div class="col-12">
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <strong>Informasi:</strong> Data Perbandignan Krieria Belum Lengkap
+            </div>
+        </div>
+    @endif
+
     <div class="col-xl-12 col-lg-12 col-md-12 col-12 layout-spacing">
         <div id="tableSimple">
             <div class="statbox widget box box-shadow">
@@ -21,10 +37,12 @@
                             </thead>
                             <tbody>
                                 <tr>
+                                    @isset($weightBeforeNormalization[0])
+                                        @foreach (json_decode($weightBeforeNormalization[0]) as $item)
+                                            <td>{{ number_format($item, 3) }}</td>
+                                        @endforeach
+                                    @endisset
 
-                                    @foreach (json_decode($weightBeforeNormalization[0]) as $item)
-                                        <td>{{ number_format($item, 3) }}</td>
-                                    @endforeach
                                 </tr>
                             </tbody>
                         </table>
@@ -61,9 +79,13 @@
                                 @foreach ($wisata as $index => $item)
                                     <tr>
                                         <td class="col-4">{{ $item->name }}</td>
-                                        @foreach ($wp['decision_matrix'][$item->id] as $value)
-                                            <td>{{ $value }}</td>
-                                        @endforeach
+
+                                        @isset($wp['decision_matrix'])
+                                            @foreach ($wp['decision_matrix'][$item->id] as $value)
+                                                <td>{{ $value }}</td>
+                                            @endforeach
+                                        @endisset
+
                                     </tr>
                                 @endforeach
                             </tbody>
@@ -99,9 +121,11 @@
                                 <tr>
                                     @foreach ($kriteria as $index => $item)
                                         @if ($item->type == 'benefit')
-                                            <td>{{ number_format($wp['wights'][$index], 3) }}</td>
+                                            <td>{{ number_format(isset($wp['wights'][$index]) ? $wp['wights'][$index] : 0, 3) }}
+                                            </td>
                                         @else
-                                            <td>{{ number_format(-$wp['wights'][$index], 3) }}</td>
+                                            <td>{{ number_format(isset($wp['wights'][$index]) ? -$wp['wights'][$index] : 0, 3) }}
+                                            </td>
                                         @endif
                                     @endforeach
                                 </tr>
@@ -142,17 +166,20 @@
                                 @foreach ($wisata as $index => $item)
                                     <tr>
                                         <td class="col-4">{{ $item->name }}</td>
-                                        @foreach ($wp['normalized_matrix'][$item->id] as $value)
-                                            <td>{{ number_format($value, 3) }}</td>
-                                        @endforeach
-                                        <td>{{ number_format($wp['S'][$item->id], 3) }}</td>
+                                        @isset($wp['normalized_matrix'][$item->id])
+                                            @foreach ($wp['normalized_matrix'][$item->id] as $value)
+                                                <td>{{ number_format($value, 3) }}</td>
+                                            @endforeach
+                                        @endisset
+                                        <td>{{ number_format(isset($wp['S'][$item->id]) ? $wp['S'][$item->id] : 0, 3) }}
+                                        </td>
                                     </tr>
                                 @endforeach
                             </tbody>
                             <tfoot>
                                 <tr class="bg-light font-weight-bold">
                                     <td class="text-center" colspan="{{ $kriteria->count() + 1 }}">Total</td>
-                                    <td>{{ number_format(array_sum($wp['S']), 3) }}</td>
+                                    <td>{{ number_format(array_sum(isset($wp['S']) ? $wp['S'] : [0]), 3) }}</td>
                                 </tr>
                             </tfoot>
                         </table>
@@ -188,10 +215,13 @@
                                     <tr>
                                         <td class="col-4">{{ $item->name }}</td>
                                         <td class="text-center">
-                                            {{ number_format($wp['S'][$item->id], 3) }} /
-                                            {{ number_format(array_sum($wp['S']), 3) }}
+                                            {{ number_format(isset($wp['S'][$item->id]) ? $wp['S'][$item->id] : 0, 3) }}
+                                            /
+                                            {{ number_format(array_sum(isset($wp['S']) ? $wp['S'] : [0]), 3) }}
                                         </td>
-                                        <td class="text-center">{{ number_format($wp['V'][$item->id], 3) }}</td>
+                                        <td class="text-center">
+                                            {{ number_format(isset($wp['V'][$item->id]) ? $wp['V'][$item->id] : 0, 3) }}
+                                        </td>
                                     </tr>
                                 @endforeach
                             </tbody>

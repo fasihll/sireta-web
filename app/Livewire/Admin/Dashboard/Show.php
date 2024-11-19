@@ -17,7 +17,13 @@ class Show extends Component
     {
         $weightBeforeNormalization = PerbandinganBerpasangan::pluck('wights')->toArray();
         $perbandinganBerpasangan = PerbandinganBerpasangan::first();
-        $wp = WpServices::calculateWPWithNormalization();
+        // If weights are not available, do not perform WP calculation
+        if (empty($weightBeforeNormalization)) {
+            $wp = null; // Set WP to null if no weights are found
+        } else {
+            // Perform WP calculation only if weights are available
+            $wp = WpServices::calculateWPWithNormalization($weightBeforeNormalization);
+        }
         $kriteria = Kriteria::all();
         $wisata = Wisata::all();
         $users = User::all();

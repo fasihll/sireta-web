@@ -88,7 +88,9 @@
                 <div class="w-content">
 
                     <div class="w-info">
-                        <p class="value">{{ $perbandinganBerpasangan->consistency_ratio }}</p>
+                        <p class="value">
+                            {{ $perbandinganBerpasangan->consistency_ratio ?? '-' }}
+                        </p>
                     </div>
 
                 </div>
@@ -101,11 +103,14 @@
 
                     <div class="">
                         <div class="w-icon">
-                            @if ($perbandinganBerpasangan->consistency_ratio <= 0.1)
-                                <p class="text-success">Konsisten</p>
-                            @else
-                                <p class="text-danger">Tidak Konsisten</p>
-                            @endif
+                            @isset($perbandinganBerpasangan)
+                                @if ($perbandinganBerpasangan->consistency_ratio <= 0.1)
+                                    <p class="text-success">Konsisten</p>
+                                @else
+                                    <p class="text-danger">Tidak Konsisten</p>
+                                @endif
+                            @endisset
+
                         </div>
                     </div>
 
@@ -251,9 +256,9 @@
                         @endfor
                     ],
                     series: [
-                        {{ number_format(reset($wp['V']), 3) }},
-                        @foreach ($wp['sorted_wisata'] as $index => $item)
-                            {{ number_format($wp['V'][$item->id], 3) }},
+                        {{ $wp ? number_format(reset($wp['V']), 3) : '0' }},
+                        @foreach ($wp['sorted_wisata'] ?? [] as $index => $item)
+                            {{ isset($wp['V'][$item->id]) ? number_format($wp['V'][$item->id], 3) : '0' }},
                         @endforeach
                     ]
                 }

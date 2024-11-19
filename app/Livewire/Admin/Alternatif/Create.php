@@ -22,7 +22,7 @@ class Create extends Component
     #[Validate('required')]
     public $name;
 
-    #[Validate('required')]
+    #[Validate('required|max:255')]
     public $description;
 
     #[Validate('required')]

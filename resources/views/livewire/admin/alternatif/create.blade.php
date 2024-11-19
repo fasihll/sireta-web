@@ -32,7 +32,7 @@
         <div class="form-group ">
             <label for="exampleFormControlTextarea1">Description</label>
             <textarea class="form-control @error('description') is-invalid @enderror" id="exampleFormControlTextarea1"
-                rows="3" wire:model='description'></textarea>
+                rows="3" wire:model='description' maxlength="255"></textarea>
             <div class="invalid-feedback">
                 @error('description')
                     {{ $message }}
