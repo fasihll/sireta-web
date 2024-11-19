@@ -4,6 +4,7 @@ namespace App\Livewire\Landing;
 
 use App\Models\Category;
 use App\Models\Feedback;
+use App\Models\PerbandinganBerpasangan;
 use App\Models\Wisata;
 use App\Services\WpServices;
 use Illuminate\Support\Facades\Auth;
@@ -56,7 +57,13 @@ class Home extends Component
     #[Layout('layouts.landing')]
     public function render()
     {
-        $rekomendasi = WpServices::calculateWPWithNormalization()['sorted_wisata'];
+        $bobotahp = PerbandinganBerpasangan::first();
+
+        if ($bobotahp && isset($bobotahp->wights)) {
+            $rekomendasi = WpServices::calculateWPWithNormalization()['sorted_wisata'];
+        } else {
+            $rekomendasi = null;
+        }
         $category = Category::all();
         $alldata = Wisata::with('category', 'alternatifKriteria.kriteria', 'feedbacks')
             ->whereHas('category', function ($query) {
@@ -98,12 +105,20 @@ class Home extends Component
     {
         $this->selected_wisata = WpServices::calculateWPWithNormalization()['sorted_wisata'][$index]->toArray();
 
-        $latlng = $this->selected_wisata['alternatif_kriteria'][0]['latlng'];
-        if ($latlng != null) {
-            list($latitude, $longitude) = explode(',', $latlng);
-            $this->dispatch('updateMaps', lat: $latitude, lng: $longitude, name: $this->selected_wisata['name'], alamat: $this->selected_wisata['alternatif_kriteria'][0]['alamat']);
+        if (isset($this->selected_wisata['alternatif_kriteria'][0])) {
+            $latlng = $this->selected_wisata['alternatif_kriteria'][0]['latlng'] ?? null;
+
+            // Jika latlng tidak null, pisahkan menjadi latitude dan longitude
+            if ($latlng != null) {
+                list($latitude, $longitude) = explode(',', $latlng);
+                $this->dispatch('updateMaps', lat: $latitude, lng: $longitude, name: $this->selected_wisata['name'], alamat: $this->selected_wisata['alternatif_kriteria'][0]['alamat']);
+            } else {
+                // Jika latlng null, gunakan nilai default
+                $this->dispatch('updateMaps', lat: 0.0000, lng: 0.0000, name: $this->selected_wisata['name'], alamat: $this->selected_wisata['alternatif_kriteria'][0]['alamat']);
+            }
         } else {
-            $this->dispatch('updateMaps', lat: -0000, lng: 0000, name: $this->selected_wisata['name'], alamat: $this->selected_wisata['alternatif_kriteria'][0]['alamat']);
+            // Jika alternatif_kriteria[0] tidak ada, gunakan nilai default untuk latlng
+            $this->dispatch('updateMaps', lat: 0.0000, lng: 0.0000, name: $this->selected_wisata['name'], alamat: 'Alamat tidak tersedia');
         }
     }
 
@@ -113,12 +128,27 @@ class Home extends Component
             ->where('id', $id)
             ->first()->toArray();
         // dd($this->selected_wisata);
-        $latlng = $this->selected_wisata['alternatif_kriteria'][0]['latlng'];
-        if ($latlng != null) {
-            list($latitude, $longitude) = explode(',', $latlng);
-            $this->dispatch('updateMaps', lat: $latitude, lng: $longitude, name: $this->selected_wisata['name'], alamat: $this->selected_wisata['alternatif_kriteria'][0]['alamat']);
+        if (isset($this->selected_wisata['alternatif_kriteria'][0])) {
+            $latlng = $this->selected_wisata['alternatif_kriteria'][0]['latlng'] ?? null;
+            $alamat = $this->selected_wisata['alternatif_kriteria'][0]['alamat'] ?? 'Alamat tidak tersedia';
+
+            // Jika latlng ada, pisahkan menjadi latitude dan longitude
+            if ($latlng != null) {
+                list($latitude, $longitude) = explode(',', $latlng);
+                $this->dispatch('updateMaps', lat: $latitude, lng: $longitude, name: $this->selected_wisata['name'], alamat: $alamat);
+            } else {
+                // Jika latlng null, gunakan nilai default untuk latlng
+                $this->dispatch('updateMaps', lat: 0.0000, lng: 0.0000, name: $this->selected_wisata['name'], alamat: $alamat);
+            }
         } else {
-            $this->dispatch('updateMaps', lat: -0000, lng: 0000, name: $this->selected_wisata['name'], alamat: $this->selected_wisata['alternatif_kriteria'][0]['alamat']);
+            // Jika alternatif_kriteria[0] tidak ada, kirimkan nilai default untuk latlng dan alamat
+            $this->dispatch(
+                'updateMaps',
+                lat: 0.0000,
+                lng: 0.0000,
+                name: $this->selected_wisata['name'],
+                alamat: 'Alamat tidak tersedia'
+            );
         }
     }
 }
