@@ -64,12 +64,15 @@ class Home extends Component
         } else {
             $rekomendasi = null;
         }
+
+        // dd($rekomendasi);
         $category = Category::all();
         $alldata = Wisata::with('category', 'alternatifKriteria.kriteria', 'feedbacks')
             ->whereHas('category', function ($query) {
                 $query->where('id', $this->categorySelected);
             })
-            ->paginate(10);
+            ->paginate(10); //dipanggil 10 rekoeendasi teratas
+
         $feedbackuser = Feedback::orWhere('wisata_id', $this->selected_wisata['id'] ?? null)
             ->where('user_id', Auth::user()->id ?? null)->first();
         $allFeedback = Feedback::with('user')->where('wisata_id', $this->selected_wisata['id'] ?? null)->get();
