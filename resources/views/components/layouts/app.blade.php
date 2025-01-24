@@ -22,6 +22,8 @@
     <link href="{{ asset('assets/css/plugins.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/css/elements/breadcrumb.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/css/components/custom-modal.css') }}" rel="stylesheet" type="text/css" />
+    {{-- excel --}}
+    <link href="{{ asset('plugins/file-upload/file-upload-with-preview.min.css') }}" rel="stylesheet" type="text/css" />
 
     @stack('styles')
 
@@ -100,7 +102,7 @@
         });
     </script>
     <script src="{{ asset('assets/js/custom.js') }}"></script>
-
+    <script src="{{ asset('plugins/file-upload/file-upload-with-preview.min.js') }}"></script>
 
     @stack('scripts')
     <!-- END GLOBAL MANDATORY SCRIPTS -->
