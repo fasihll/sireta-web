@@ -3,6 +3,26 @@
      <div class="col-xl-12 col-lg-12 col-md-12 col-12 layout-spacing">
          <x-admin.title title="Data Matrix Perbandingan" />
          <div class="widget widget-content-area br-4">
+
+             {{-- uplaod file excel --}}
+             <div class="custom-file-container" data-upload-id="myFirstImage" wire:ignore>
+                 <label for="excelFile">Upload Matrix Perbandingan (Kuesioner) <a href="javascript:void(0)"
+                         class="custom-file-container__image-clear" title="Clear Image">x</a></label>
+                 <label class="custom-file-container__custom-file">
+                     <input type="file" wire:model="excelFile"
+                         class="custom-file-container__custom-file__custom-file-input" accept=".xlsx, .xls, .csv">
+                     @error('excelFile')
+                         <span class="text-danger">{{ $message }}</span>
+                     @enderror
+                     <input type="hidden" name="MAX_FILE_SIZE" value="5242880" />
+                     <span class="custom-file-container__custom-file__custom-file-control"></span>
+                 </label>
+             </div>
+             <div class="my-3">
+                 <p>Download Template Excel <span class="btn btn-sm btn-success" wire:click='downloadTemplate'>Matrix
+                         Template</span></p>
+             </div>
+
              <div class="widget-one">
                  <table class="table table-bordered table-hover">
                      <thead>
@@ -191,3 +211,10 @@
 
      </div>
  </div>
+ @assets
+     @push('scripts')
+         <script>
+             var firstUpload = new FileUploadWithPreview('myFirstImage')
+         </script>
+     @endpush
+ @endassets
