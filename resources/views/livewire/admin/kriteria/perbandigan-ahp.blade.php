@@ -5,7 +5,7 @@
          <div class="widget widget-content-area br-4">
 
              {{-- uplaod file excel --}}
-             <div class="custom-file-container mb-4" data-upload-id="myFirstImage" wire:ignore>
+             <div class="custom-file-container" data-upload-id="myFirstImage" wire:ignore>
                  <label for="excelFile">Upload Matrix Perbandingan (Kuesioner) <a href="javascript:void(0)"
                          class="custom-file-container__image-clear" title="Clear Image">x</a></label>
                  <label class="custom-file-container__custom-file">
@@ -17,6 +17,10 @@
                      <input type="hidden" name="MAX_FILE_SIZE" value="5242880" />
                      <span class="custom-file-container__custom-file__custom-file-control"></span>
                  </label>
+             </div>
+             <div class="my-3">
+                 <p>Download Template Excel <span class="btn btn-sm btn-success" wire:click='downloadTemplate'>Matrix
+                         Template</span></p>
              </div>
 
              <div class="widget-one">

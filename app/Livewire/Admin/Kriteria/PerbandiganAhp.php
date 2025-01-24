@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Admin\Kriteria;
 
+use App\Exports\ParwiseComparisonTemplate;
 use App\Imports\ComparisonMatrixImport;
 use App\Models\Kriteria;
 use App\Models\PerbandinganBerpasangan;
@@ -68,7 +69,7 @@ class PerbandiganAhp extends Component
             $matrixData = Excel::toArray(new ComparisonMatrixImport, $this->excelFile)[0];
             // dd($matrixData);
             // Bersihkan data: Hapus baris pertama, kolom pertama, dan baris terakhir
-            $filteredMatrix = array_slice($matrixData, 1, -1); // Hilangkan baris pertama (header) dan baris terakhir (Total)
+            $filteredMatrix = array_slice($matrixData, 1); // Hilangkan baris pertama (header) dan baris terakhir (Total)
             $this->comparisonMatrix = array_map(function ($row) {
                 return array_slice($row, 1); // Hilangkan kolom pertama dari setiap baris
             }, $filteredMatrix);
@@ -119,6 +120,11 @@ class PerbandiganAhp extends Component
                 'onConfirmed' => 'store',
             ]);
         }
+    }
+
+    public function downloadTemplate()
+    {
+        return Excel::download(new ParwiseComparisonTemplate, 'ParwiseComparison-Template.xlsx', \Maatwebsite\Excel\Excel::XLSX);
     }
 
     public function store($data)
