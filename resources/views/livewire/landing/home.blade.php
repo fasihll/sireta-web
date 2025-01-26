@@ -218,7 +218,6 @@
         </div>
     </section>
 
-
     <dialog id="my_modal_3" class="modal" wire:ignore.self>
         <div class="modal-box w-11/12 max-w-5xl p-0 h-[90vh]">
             <form method="dialog">
@@ -228,8 +227,8 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 h-full">
                 <!-- Bagian kiri: Gambar full yang tidak bisa di-scroll -->
                 <div class="h-full overflow-hidden">
-                    <img src="{{ asset('assets/img/lightbox-1.jpg') }}" alt="Placeholder Image"
-                        class="w-full h-full object-cover rounded-lg">
+                    <img src="{{ isset($selected_wisata['image']) ? asset('storage/images/' . $selected_wisata['image']) : asset('assets/img/lightbox-1.jpg') }}"
+                        alt="gmabar wisata" class="w-full h-full object-cover rounded-lg">
                 </div>
                 <!-- Bagian kanan: Konten dengan scroll vertikal -->
                 <div class="h-full overflow-y-scroll p-4 custom-scrollbar">
@@ -243,11 +242,11 @@
                             </g>
                         </svg>
                         <span
-                            class="font-medium">{{ $selected_wisata['alternatif_kriteria'][0]['alamat'] ?? 'null' }}</span>
+                            class="font-medium">{{ $selected_wisata['alternatif_kriteria'][0]['alamat'] ?? 'Loading...' }}</span>
                     </p>
                     <h3 class="text-4xl font-medium my-3">
 
-                        {{ $selected_wisata['name'] ?? 'null' }}
+                        {{ $selected_wisata['name'] ?? 'Loading...' }}
 
                     </h3>
                     <table>
@@ -257,24 +256,25 @@
                                     @if ($item['kriteria']['name'] == 'Biaya')
                                         <tr>
                                             <td class="mr-2">{{ $item['kriteria']['name'] }}</td>
-                                            <td>: Rp. {{ $item['value'] }}</td>
+                                            <td>: Rp. {{ $item['value'] ?? 'Loading...' }}</td>
                                         </tr>
                                     @elseif ($item['kriteria']['name'] == 'Fasilitas')
                                         <tr>
-                                            <td class="mr-2">{{ $item['kriteria']['name'] }}</td>
-                                            <td>: {{ $item['value'] }} {{ $item['keterangan'] ?? '' }}</td>
+                                            <td class="mr-2">{{ $item['kriteria']['name'] ?? 'Loading...' }}</td>
+                                            <td>: {{ $item['value'] }} {{ $item['keterangan'] ?? 'Loading...' }}</td>
                                         </tr>
                                     @else
                                         <tr>
                                             <td class="mr-2">{{ $item['kriteria']['name'] }}</td>
-                                            <td>: {{ $item['value'] == 1 ? 5 : 0 }}/5 {{ $item['keterangan'] ?? '' }}</td>
+                                            <td>: {{ $item['value'] == 1 ? 5 : 0 }}/5
+                                                {{ $item['keterangan'] }}</td>
                                         </tr>
                                     @endif
                                 @endforeach
                             @endisset
                         </tbody>
                     </table>
-                    <p class="py-4">{{ $selected_wisata['description'] ?? 'null' }}</p>
+                    <p class="py-4">{{ $selected_wisata['description'] ?? 'Loading...' }}</p>
 
                     <div id="map" class="rounded-lg" wire:ignore></div>
 

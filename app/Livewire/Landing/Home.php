@@ -124,6 +124,7 @@ class Home extends Component
                 // Jika latlng null, gunakan nilai default
                 $this->dispatch('updateMaps', lat: 0.0000, lng: 0.0000, name: $this->selected_wisata['name'], alamat: $this->selected_wisata['alternatif_kriteria'][0]['alamat']);
             }
+            // dd($this->selected_wisata);
         } else {
             // Jika alternatif_kriteria[0] tidak ada, gunakan nilai default untuk latlng
             $this->dispatch('updateMaps', lat: 0.0000, lng: 0.0000, name: $this->selected_wisata['name'], alamat: 'Alamat tidak tersedia');
