@@ -267,7 +267,7 @@
                                     @else
                                         <tr>
                                             <td class="mr-2">{{ $item['kriteria']['name'] }}</td>
-                                            <td>: {{ $item['value'] }}/5 {{ $item['keterangan'] ?? '' }}</td>
+                                            <td>: {{ $item['value'] == 1 ? 5 : 0 }}/5 {{ $item['keterangan'] ?? '' }}</td>
                                         </tr>
                                     @endif
                                 @endforeach

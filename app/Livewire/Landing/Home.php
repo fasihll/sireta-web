@@ -113,7 +113,12 @@ class Home extends Component
 
             // Jika latlng tidak null, pisahkan menjadi latitude dan longitude
             if ($latlng != null) {
-                list($latitude, $longitude) = explode(',', $latlng);
+                if (isset($latlng) && strpos($latlng, ',') !== false) {
+                    list($latitude, $longitude) = explode(',', $latlng);
+                } else {
+                    $latitude = null;
+                    $longitude = null;
+                }
                 $this->dispatch('updateMaps', lat: $latitude, lng: $longitude, name: $this->selected_wisata['name'], alamat: $this->selected_wisata['alternatif_kriteria'][0]['alamat']);
             } else {
                 // Jika latlng null, gunakan nilai default
