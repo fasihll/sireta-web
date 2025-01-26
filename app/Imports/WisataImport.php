@@ -13,12 +13,15 @@ class WisataImport implements ToCollection
 {
     public function collection(Collection $rows)
     {
-        // Ambil semua kriteria dari tabel Kriteria
-        $kriteriaMap = Kriteria::pluck('id', 'name')->toArray();
         $rowNumber = 0;
 
-
         try {
+            // Ambil header (baris pertama)
+            $header = $rows->first()->toArray();
+
+            // Ambil semua kriteria dari tabel Kriteria
+            $kriteriaMap = Kriteria::pluck('id', 'name')->toArray();
+
             foreach ($rows as $key => $row) {
                 // Skip header row
                 if ($key === 0) continue;
@@ -26,10 +29,7 @@ class WisataImport implements ToCollection
                 $rowNumber = $key + 1;
 
                 // Ambil atau buat categoryId dari tabel Category
-                $category = Category::firstOrCreate(
-                    ['name' => $row[4]]
-                );
-
+                $category = Category::firstOrCreate(['name' => $row[4]]);
 
                 // Buat data Wisata
                 $wisata = Wisata::updateOrCreate(
@@ -40,22 +40,10 @@ class WisataImport implements ToCollection
                     ]
                 );
 
-
-                // Masukkan nilai ke tabel alternatif_kriteria
-                $columns = [
-                    'Biaya' => 5,          // Kolom Biaya ada di index 5
-                    'Fasilitas' => 6,      // Kolom Fasilitas ada di index 6
-                    'Keterangan' => 7,     // Kolom Keterangan ada di index 7
-                    'Kondisi Jalan' => 8,  // Kolom Kondisi Jalan ada di index 8
-                    'Keamanan' => 9,       // Kolom Keamanan ada di index 9
-                    'Kebersihan' => 10,    // Kolom Kebersihan ada di index 10
-                    'Alamat' => 11,        // Kolom Alamat ada di index 11
-                    'LatLng' => 12,
-                ];
-
-                foreach ($columns as $kriteriaName => $index) {
+                // Proses setiap kriteria berdasarkan header secara dinamis
+                foreach ($header as $index => $kriteriaName) {
                     if (isset($kriteriaMap[$kriteriaName])) {
-
+                        // Cek apakah kriteria adalah Fasilitas untuk menambahkan Keterangan
                         $keterangan = ($kriteriaName === 'Fasilitas') ? $row[7] : null;
 
                         $wisata->alternatifKriteria()->updateOrCreate(
@@ -64,17 +52,21 @@ class WisataImport implements ToCollection
                                 'wisata_id' => $wisata->id,                  // Kondisi pencarian berdasarkan wisata_id
                             ],
                             [
-                                'value' => $row[$index], // Update atau set nilai Value
-                                'keterangan' => $keterangan, // Update atau set nilai Keterangan
-                                'alamat' => $row[11],
-                                'latlng' => $row[12]
+                                'value' => $row[$index] ?? null, // Update atau set nilai Value
+                                'keterangan' => $keterangan,    // Update atau set nilai Keterangan
                             ]
                         );
                     }
                 }
+
+                // Masukkan Alamat dan LatLng di luar loop
+                $wisata->update([
+                    'alamat' => $row[11] ?? null,  // Kolom Alamat
+                    'latlng' => $row[12] ?? null, // Kolom LatLng
+                ]);
             }
         } catch (\Throwable $th) {
-            throw new \Exception(" error di excel baris ke " . $rowNumber . ". Tolong delete row baris excel yang tidak terpakai !!");
+            throw new \Exception("Error di excel baris ke " . $rowNumber . ". Tolong delete row baris excel yang tidak terpakai !!");
         }
     }
 }
