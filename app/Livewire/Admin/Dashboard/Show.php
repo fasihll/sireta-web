@@ -24,6 +24,8 @@ class Show extends Component
             // Perform WP calculation only if weights are available
             $wp = WpServices::calculateWPWithNormalization($weightBeforeNormalization);
         }
+
+        // dd($wp);
         $kriteria = Kriteria::all();
         $wisata = Wisata::all();
         $users = User::all();

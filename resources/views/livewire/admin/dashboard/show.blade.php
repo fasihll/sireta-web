@@ -231,36 +231,39 @@
     @push('scripts')
         <script>
             function Category() {
+                var categoryData = @json($wisataByCategory);
+
+                var labels = categoryData.map(function(item) {
+                    return item.name; // Ambil nama kategori
+                });
+
+                var series = categoryData.map(function(item) {
+                    return item.wisatas.length; // Ambil jumlah wisata di setiap kategori
+                });
+
                 return {
-                    labels: [
-                        '{{ $wisataByCategory[0]->name }}',
-                        @for ($i = 0; $i < $wisataByCategory->count(); $i++)
-                            '{{ $wisataByCategory[$i]->name }}',
-                        @endfor
-                    ],
-                    series: [
-                        {{ $wisataByCategory[0]->wisatas->count() }},
-                        @foreach ($wisataByCategory as $item)
-                            {{ $item->wisatas->count() }},
-                        @endforeach
-                    ]
+                    labels: labels,
+                    series: series
                 };
             }
 
+
             function Wisata() {
+                var wisataData = @json($wp['sorted_wisata']);
+                var score = @json($wp['V']);
+
+                var xaxis = wisataData.map(function(item) {
+                    return item.name;
+                });
+
+                var series = wisataData.map(function(item) {
+                    // Mengakses nilai berdasarkan ID wisata
+                    return score[item.id] ? parseFloat(score[item.id]).toFixed(3) : 0;
+                });
+
                 return {
-                    xaxis: [
-                        '{{ $wisata[0]->name }}',
-                        @for ($i = 0; $i < $wisata->count(); $i++)
-                            '{{ $wisata[$i]->name }}',
-                        @endfor
-                    ],
-                    series: [
-                        {{ $wp ? number_format(reset($wp['V']), 3) : '0' }},
-                        @foreach ($wp['sorted_wisata'] ?? [] as $index => $item)
-                            {{ isset($wp['V'][$item->id]) ? number_format($wp['V'][$item->id], 3) : '0' }},
-                        @endforeach
-                    ]
+                    xaxis: xaxis,
+                    series: series
                 }
             }
         </script>

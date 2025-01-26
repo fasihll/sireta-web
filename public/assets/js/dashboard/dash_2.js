@@ -1,6 +1,6 @@
 var dataWisata = Wisata();
 console.log(dataWisata); // Memeriksa seluruh objek
-console.log(dataWisata.xaxis); // Memeriksa array labels
+// console.log(dataWisata.xaxis); // Memeriksa array labels
 
 try {
     /*

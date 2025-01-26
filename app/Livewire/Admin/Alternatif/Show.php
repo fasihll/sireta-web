@@ -2,25 +2,33 @@
 
 namespace App\Livewire\Admin\Alternatif;
 
+use App\Exports\TemplateWisataExport;
+use App\Imports\WisataImport;
 use App\Models\Category;
 use App\Models\Wisata;
 use Illuminate\Support\Facades\Storage;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Attributes\On;
 use Livewire\Component;
+use Livewire\Features\SupportFileUploads\WithFileUploads as SupportFileUploadsWithFileUploads;
+use Livewire\WithFileUploads;
 use Livewire\WithPagination;
+use Maatwebsite\Excel\Facades\Excel;
 use phpDocumentor\Reflection\Types\Boolean;
 
 class Show extends Component
 {
     use WithPagination;
     use LivewireAlert;
+    use WithFileUploads;
+    use SupportFileUploadsWithFileUploads;
 
     protected $paginationTheme = 'bootstrap';
 
     public $selectedData = [];
     public $selectAll = false;
     public $keyword = '';
+    public $excelFile;
 
     protected $listeners = [
         'confirmed',
@@ -102,6 +110,27 @@ class Show extends Component
     public function refreshData()
     {
         $this->dispatch('$refresh');
+    }
+
+    public function importExcel()
+    {
+        $this->validate([
+            'excelFile' => 'required|file|mimes:xlsx,xls,csv|max:5120',
+        ]);
+        // dd($this->excelFile->getRealPath());
+        try {
+            Excel::import(new WisataImport, $this->excelFile->getRealPath());
+            $this->alert('success', 'Wisata berhasil di Import');
+        } catch (\Exception $e) {
+            $this->alert('error', 'Wisata gagal di Import' . $e->getMessage());
+        }
+
+        $this->reset('excelFile');
+    }
+
+    public function downloadTemplate()
+    {
+        return Excel::download(new TemplateWisataExport(), 'Template_Format_DataWisata.xlsx');
     }
 
     public function render()
