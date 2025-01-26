@@ -30,11 +30,47 @@
                          </div>
                      </div>
 
+
+
                      @livewire('admin.alternatif.create')
 
 
                  </div>
 
+                 {{-- uplaod file excel --}}
+
+                 <div class="d-flex align-items-center">
+                     <div class="custom-file-container" data-upload-id="myFirstImage" wire:ignore>
+                         <label class="custom-file-container__custom-file">
+                             <input type="file" wire:model="excelFile"
+                                 class="custom-file-container__custom-file__custom-file-input" accept=".xlsx,.xls,.csv">
+                             @error('excelFile')
+                                 <span class="text-danger">{{ $message }}</span>
+                             @enderror
+                             <input type="hidden" name="MAX_FILE_SIZE" value="5242880" />
+                             <span class="custom-file-container__custom-file__custom-file-control"></span>
+                         </label>
+                     </div>
+                     <button class="btn btn-success" style="transform: translateY(3px)" wire:click='importExcel'><svg
+                             wire:loading wire:target='excelFile,importExcel' xmlns="http://www.w3.org/2000/svg"
+                             width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                             stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                             class="feather feather-loader spin mr-2">
+                             <line x1="12" y1="2" x2="12" y2="6"></line>
+                             <line x1="12" y1="18" x2="12" y2="22"></line>
+                             <line x1="4.93" y1="4.93" x2="7.76" y2="7.76"></line>
+                             <line x1="16.24" y1="16.24" x2="19.07" y2="19.07"></line>
+                             <line x1="2" y1="12" x2="6" y2="12"></line>
+                             <line x1="18" y1="12" x2="22" y2="12"></line>
+                             <line x1="4.93" y1="19.07" x2="7.76" y2="16.24"></line>
+                             <line x1="16.24" y1="7.76" x2="19.07" y2="4.93"></line>
+                         </svg>Import</button>
+                 </div>
+
+                 <div class="my-3">
+                     <p>Download Template Excel <span class="btn btn-sm btn-success" wire:click='downloadTemplate'>Data
+                             Wisata Tmplate</span></p>
+                 </div>
 
                  <table
                      class="table table-bordered table-hover table-striped table-checkable table-highlight-head mb-4">
@@ -87,12 +123,12 @@
                                      <ul class="table-controls">
                                          <li>
                                              <a href="javascript:void(0);" data-toggle="tooltip" data-placement="top"
-                                                 title="Edit" class=""><svg xmlns="http://www.w3.org/2000/svg"
-                                                     width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                                     stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                                     stroke-linejoin="round" class="feather feather-edit-2 text-success"
-                                                     data-toggle="modal" data-target="#modalEdit"
-                                                     x-on:click="modelEdit = ! modelEdit"
+                                                 title="Edit" class=""><svg
+                                                     xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                     viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                     class="feather feather-edit-2 text-success" data-toggle="modal"
+                                                     data-target="#modalEdit" x-on:click="modelEdit = ! modelEdit"
                                                      wire:click="dataEdit({{ $item->id }})">
                                                      <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z">
                                                      </path>
@@ -101,10 +137,10 @@
                                          </li>
                                          <li>
                                              <a href="javascript:void(0);" data-toggle="tooltip" data-placement="top"
-                                                 title="Delete"><svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                                     height="24" viewBox="0 0 24 24" fill="none"
-                                                     stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                                     stroke-linejoin="round"
+                                                 title="Delete"><svg xmlns="http://www.w3.org/2000/svg"
+                                                     width="24" height="24" viewBox="0 0 24 24"
+                                                     fill="none" stroke="currentColor" stroke-width="2"
+                                                     stroke-linecap="round" stroke-linejoin="round"
                                                      class="feather feather-trash-2 text-danger"
                                                      wire:click='delete({{ $item->id }})'>
                                                      <polyline points="3 6 5 6 21 6"></polyline>
@@ -148,4 +184,10 @@
      <link rel="stylesheet" type="text/css" href="assets/css/forms/theme-checkbox-radio.css" />
      <link href="assets/css/tables/table-basic.css" rel="stylesheet" type="text/css" />
      <link href="assets/css/elements/avatar.css" rel="stylesheet" type="text/css" />
+
+     @push('scripts')
+         <script>
+             var firstUpload = new FileUploadWithPreview('myFirstImage')
+         </script>
+     @endpush
  @endassets

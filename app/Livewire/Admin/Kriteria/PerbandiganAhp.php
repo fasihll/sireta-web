@@ -157,9 +157,6 @@ class PerbandiganAhp extends Component
         $this->mount();
     }
 
-
-
-
     public function back()
     {
         $this->redirectRoute('kriteria', navigate: true);

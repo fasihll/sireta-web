@@ -25,5 +25,9 @@ class CategorySeeder extends Seeder
             'name' => 'Wisata Kuliner',
             'description' => 'Tempat wisata Alam.'
         ]);
+        Category::create([
+            'name' => 'Wisata Budaya',
+            'description' => 'Tempat wisata Alam.'
+        ]);
     }
 }
