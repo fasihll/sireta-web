@@ -63,8 +63,8 @@
                                 </div>
                                 <!-- Gambar -->
                                 <div class="relative h-80">
-                                    <img src="{{ asset('assets/img/lightbox-1.jpg') }}" alt="Image Title"
-                                        class="w-full h-full object-cover">
+                                    <img src="{{ isset($r->image) ? asset('storage/images/' . $r->image) : asset('assets/img/lightbox-1.jpg') }}"
+                                        alt="Image Title" class="w-full h-full object-cover">
                                     <!-- Bayangan di bawah gambar untuk memperjelas title -->
                                     <div
                                         class="absolute inset-0 flex items-end justify-start p-4 bg-gradient-to-t from-black to-transparent">
@@ -157,8 +157,8 @@
                             </div> --}}
                             <!-- Gambar -->
                             <div class="relative h-80">
-                                <img src="{{ asset('assets/img/lightbox-1.jpg') }}" alt="Image Title"
-                                    class="w-full h-full object-cover">
+                                <img src="{{ isset($item->image) ? asset('storage/images/' . $item->image) : asset('assets/img/lightbox-1.jpg') }}"
+                                    alt="Image Title" class="w-full h-full object-cover">
                                 <!-- Bayangan di bawah gambar untuk memperjelas title -->
                                 <div
                                     class="absolute inset-0 flex items-end justify-start p-4 bg-gradient-to-t from-black to-transparent">
