@@ -8,7 +8,7 @@
              </a>
          </li> --}}
             <li class="nav-item theme-text">
-                <a href="index.html" class="nav-link"> SIRETA </a>
+                <a href="{{ route('home') }}" class="nav-link"> SIRETA </a>
             </li>
             <li class="nav-item toggle-sidebar">
                 <a href="javascript:void(0);" class="sidebarCollapse" data-placement="bottom"><svg
