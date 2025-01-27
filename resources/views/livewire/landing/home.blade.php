@@ -212,7 +212,7 @@
                 Total Data : {{ $alldata->total() }}
             </div>
 
-            {{ $alldata->links() }}
+            {{ $alldata->links(data: ['scrollTo' => false]) }}
             <!-- Navigation buttons -->
             <div class="swiper-pagination mt-5"></div>
         </div>

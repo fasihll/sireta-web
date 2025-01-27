@@ -102,6 +102,8 @@ class Home extends Component
     public function updateCategorySelected($categoryId)
     {
         $this->categorySelected = $categoryId;
+
+        $this->resetPage();
     }
 
     public function setSelectedData($index)
