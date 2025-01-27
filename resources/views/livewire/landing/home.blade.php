@@ -51,7 +51,7 @@
                     <!-- Slide 1 -->
                     {{-- {{ dd($rekomendasi) }} --}}
 
-                    @foreach ($rekomendasi as $key => $r)
+                    @foreach ($rekomendasi->take(10) as $key => $r)
                         <div class="swiper-slide max-w-lg my-8 transition-transform duration-300 hover:scale-[105%] mx-3"
                             onclick="my_modal_3.showModal()" wire:key='item-{{ $key }}'
                             wire:click="setSelectedData({{ $key }})">

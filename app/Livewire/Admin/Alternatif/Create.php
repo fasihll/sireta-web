@@ -16,13 +16,13 @@ class Create extends Component
     use WithFileUploads;
     use LivewireAlert;
 
-    #[Validate('nullable|image|max:1024')]
+    #[Validate('nullable|image|max:2048')]
     public $image;
 
     #[Validate('required')]
     public $name;
 
-    #[Validate('required|max:255')]
+    #[Validate('required')]
     public $description;
 
     #[Validate('required')]

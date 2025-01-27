@@ -28,6 +28,14 @@ class WisataImport implements ToCollection
 
                 $rowNumber = $key + 1;
 
+                // Simpan gambar dari kolom $row[1] ke storage
+                $imagePath = null;
+                if (isset($row[1]) && $row[1] instanceof \Illuminate\Http\UploadedFile) {
+                    $imageName = uniqid() . '.' . $row[1]->getClientOriginalExtension();
+                    $imagePath = $row[1]->storeAs('images', $imageName, 'public');
+                }
+
+
                 // Ambil atau buat categoryId dari tabel Category
                 $category = Category::firstOrCreate(['name' => $row[4]]);
 
@@ -37,6 +45,7 @@ class WisataImport implements ToCollection
                     [
                         'description' => $row[3],         // Update atau set Description
                         'category_id' => $category->id,  // Update atau set Category
+                        'image' => $imagePath,           // Update atau set Image
                     ]
                 );
 
