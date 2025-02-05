@@ -39,7 +39,7 @@
                                 <tr>
                                     @isset($weightBeforeNormalization[0])
                                         @foreach (json_decode($weightBeforeNormalization[0]) as $item)
-                                            <td>{{ number_format($item, 3) }}</td>
+                                            <td>{{ bcdiv($item, '1', 4) }}</td>
                                         @endforeach
                                     @endisset
 
@@ -121,10 +121,10 @@
                                 <tr>
                                     @foreach ($kriteria as $index => $item)
                                         @if ($item->type == 'benefit')
-                                            <td>{{ number_format(isset($wp['wights'][$index]) ? $wp['wights'][$index] : 0, 3) }}
+                                            <td>{{ bcdiv(isset($wp['wights'][$index]) ? $wp['wights'][$index] : 0, '1', 4) }}
                                             </td>
                                         @else
-                                            <td>{{ number_format(isset($wp['wights'][$index]) ? -$wp['wights'][$index] : 0, 3) }}
+                                            <td>{{ bcdiv(isset($wp['wights'][$index]) ? -$wp['wights'][$index] : 0, '1', 4) }}
                                             </td>
                                         @endif
                                     @endforeach
@@ -166,12 +166,12 @@
                                 @foreach ($wisata as $index => $item)
                                     <tr>
                                         <td class="col-4">{{ $item->name }}</td>
-                                        @isset($wp['normalized_matrix'][$item->id])
-                                            @foreach ($wp['normalized_matrix'][$item->id] as $value)
-                                                <td>{{ number_format($value, 3) }}</td>
+                                        @isset($wp['wp_details'][$item->id])
+                                            @foreach ($wp['wp_details'][$item->id] as $value)
+                                                <td>{{ bcdiv($value, '1', 4) }}</td>
                                             @endforeach
                                         @endisset
-                                        <td>{{ number_format(isset($wp['S'][$item->id]) ? $wp['S'][$item->id] : 0, 3) }}
+                                        <td>{{ bcdiv(isset($wp['S'][$item->id]) ? $wp['S'][$item->id] : 0, '1', 4) }}
                                         </td>
                                     </tr>
                                 @endforeach
@@ -179,7 +179,7 @@
                             <tfoot>
                                 <tr class="bg-light font-weight-bold">
                                     <td class="text-center" colspan="{{ $kriteria->count() + 1 }}">Total</td>
-                                    <td>{{ number_format(array_sum(isset($wp['S']) ? $wp['S'] : [0]), 3) }}</td>
+                                    <td>{{ bcdiv(array_sum(isset($wp['S']) ? $wp['S'] : [0]), '1', 4) }}</td>
                                 </tr>
                             </tfoot>
                         </table>
@@ -215,12 +215,12 @@
                                     <tr>
                                         <td class="col-4">{{ $item->name }}</td>
                                         <td class="text-center">
-                                            {{ number_format(isset($wp['S'][$item->id]) ? $wp['S'][$item->id] : 0, 3) }}
+                                            {{ bcdiv(isset($wp['S'][$item->id]) ? $wp['S'][$item->id] : 0, '1', 4) }}
                                             /
-                                            {{ number_format(array_sum(isset($wp['S']) ? $wp['S'] : [0]), 3) }}
+                                            {{ bcdiv(array_sum(isset($wp['S']) ? $wp['S'] : [0]), '1', 4) }}
                                         </td>
                                         <td class="text-center">
-                                            {{ number_format(isset($wp['V'][$item->id]) ? $wp['V'][$item->id] : 0, 3) }}
+                                            {{ bcdiv(isset($wp['V'][$item->id]) ? $wp['V'][$item->id] : 0, '1', 4) }}
                                         </td>
                                     </tr>
                                 @endforeach

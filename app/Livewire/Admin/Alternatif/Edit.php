@@ -17,7 +17,7 @@ class Edit extends Component
     use WithFileUploads;
     use LivewireAlert;
     public $id;
-    #[Validate('nullable|image|max:2048')]
+    #[Validate('nullable|max:2048')]
     public $image;
 
     #[Validate('required')]
@@ -55,7 +55,7 @@ class Edit extends Component
         ];
 
         // dd($this->image);
-        if ($this->image != null || $this->image != '') {
+        if ($this->image instanceof \Illuminate\Http\UploadedFile) {
             $oldImageName = Wisata::find($this->id)->image;
             Storage::delete('images/' . $oldImageName);
 

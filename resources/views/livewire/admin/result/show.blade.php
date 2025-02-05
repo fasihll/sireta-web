@@ -43,7 +43,7 @@
                                         <tr>
                                             <td class="col-4">{{ $item->name }}</td>
                                             <td class="text-center">
-                                                {{ number_format(isset($wp['V'][$item->id]) ? $wp['V'][$item->id] : 0, 3) }}
+                                                {{ bcdiv(isset($wp['V'][$item->id]) ? $wp['V'][$item->id] : 0, '1', 4) }}
                                             </td>
                                             <td class="text-center">{{ $index + 1 }}</td>
                                         </tr>

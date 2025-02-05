@@ -32,6 +32,7 @@ class WpServices
 
     // Inisialisasi array untuk menyimpan nilai WP (S), Vektor V, Matriks Keputusan dan normalisasi
     $wpResults = [];
+    $wpDetails = [];
     $vektorV = [];
     $decisionMatrix = []; // Matriks Keputusan
     $normalizedMatrix = []; // Matriks Keputusan Ter-normalisasi
@@ -39,9 +40,8 @@ class WpServices
 
     // Looping untuk setiap wisata
     foreach ($wisataList as $wisata) {
-      $wpValue = 1;
-      $decisionMatrix[$wisata->id] = []; // Buat entri untuk wisata ini di matriks keputusan
-      $normalizedMatrix[$wisata->id] = []; // Buat entri untuk wisata ini di matriks normalisasi
+      $wpValue = 1; // Reset setiap iterasi wisata
+      $wpDetails[$wisata->id] = []; // Simpan detail perhitungan setiap kriteria
 
       // Iterasi setiap kriteria untuk menghitung WP
       foreach ($kriteriaList as $index => $kriteria) {
@@ -52,10 +52,6 @@ class WpServices
         if ($alternatifKriteriaValues->isEmpty()) {
           continue; // Lewati jika tidak ada nilai untuk kriteria ini
         }
-
-        // Hitung nilai min dan max dari nilai kriteria tersebut
-        $minValue = $alternatifKriteriaValues->min();
-        $maxValue = $alternatifKriteriaValues->max();
 
         // Ambil nilai kriteria untuk alternatif wisata dari tabel AlternatifKriteria
         $alternatifKriteria = AlternatifKriteria::where('wisata_id', $wisata->id)
@@ -69,36 +65,41 @@ class WpServices
 
         $kriteriaValue = $alternatifKriteria->value;
 
+        // Jika nilai 0, ubah menjadi 0.01 agar tidak menyebabkan error dalam perhitungan WP
+        $normalizedValue = ($kriteriaValue == 0) ? 0.01 : $kriteriaValue;
+
         // Simpan ke matriks keputusan
         $decisionMatrix[$wisata->id][$kriteria->id] = $kriteriaValue;
 
-        // Normalisasikan nilai kriteria dengan Min-Max (skala 1-5)
-        if ($maxValue != $minValue) {
-          $normalizedValue = (($kriteriaValue - $minValue) / ($maxValue - $minValue)) * (5 - 1) + 1;
-        } else {
-          $normalizedValue = 1; // Jika semua nilai sama, normalisasi menjadi 1
-        }
-
+        // Simpan ke matriks normalisasi
         $normalizedMatrix[$wisata->id][$kriteria->id] = $normalizedValue;
 
-        // Jika kriteria bertipe benefit, pangkatkan dengan bobot; jika cost, pangkat negatif
+        // Hitung WP berdasarkan tipe kriteria
         if (isset($wights[$index])) {
           if ($kriteria->type == 'benefit') {
-            $wpValue *= pow($normalizedValue, $wights[$index]);
-          } else if ($kriteria->type == 'cost') {
-            $wpValue *= pow($normalizedValue, -$wights[$index]);
+            $criteriaResult = pow($normalizedValue, $wights[$index]);
+          } elseif ($kriteria->type == 'cost') {
+            $criteriaResult = pow($normalizedValue, -$wights[$index]);
+          } else {
+            $criteriaResult = $normalizedValue; // Jika tidak ada tipe, gunakan nilai asli
           }
+
+          // Simpan hasil perhitungan per kriteria (tidak merusak iterasi lainnya)
+          $wpDetails[$wisata->id][$kriteria->id] = sprintf("%.9f", $criteriaResult);
+
+          // Kalikan dengan WP (S) setelah semua kriteria dihitung
+          $wpValue *= $criteriaResult;
         }
       }
 
-      // Simpan hasil WP (S) untuk alternatif ini dan hitung total S
-      $wpResults[$wisata->id] = $wpValue;
+      // Simpan hasil WP (S) untuk alternatif ini
+      $wpResults[$wisata->id] = sprintf("%.9f", $wpValue);
       $totalS += $wpValue;
     }
 
     // Hitung Vektor V untuk setiap wisata
     foreach ($wpResults as $id => $S_value) {
-      $vektorV[$id] = $S_value / $totalS;
+      $vektorV[$id] = sprintf("%.9f", $S_value / $totalS);
     }
 
     // Panggil fungsi untuk mengurutkan wisata berdasarkan Vektor V
@@ -109,6 +110,7 @@ class WpServices
       'wights' => $wights, // Bobot Kriteria
       'decision_matrix' => $decisionMatrix, // Matriks Keputusan
       'normalized_matrix' => $normalizedMatrix, // Matriks Keputusan Ter-normalisasi
+      'wp_details' => $wpDetails, // Detail WP
       'S' => $wpResults, // Vektor S
       'V' => $vektorV, // Vektor V
       'sorted_wisata' => $sortedWisata // Wisata yang sudah diurutkan
